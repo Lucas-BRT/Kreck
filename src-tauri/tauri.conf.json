@@ -1,7 +1,7 @@
 {
   "productName": "kreck",
   "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.kreck.dev",
   "build": {
     "frontendDist": "../src"
   },
@@ -28,5 +28,6 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
-  }
+  },
+  "plugins": {}
 }
