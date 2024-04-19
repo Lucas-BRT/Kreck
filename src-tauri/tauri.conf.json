@@ -8,14 +8,14 @@
   "app": {
     "withGlobalTauri": true,
     "trayIcon": {
-      "iconPath": "./icons/icon.png",
+      "iconPath": "./icons/icon.ico",
       "iconAsTemplate": true
     },
     "windows": [
       {
         "title": "kreck",
-        "width": 800,
-        "height": 600
+        "width": 400,
+        "height": 300
       }
     ],
     "security": {
