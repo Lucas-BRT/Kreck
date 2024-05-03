@@ -18,7 +18,8 @@
         "height": 300,
         "skipTaskbar": true,
         "resizable": false,
-        "minimizable": false 
+        "minimizable": false,
+        "alwaysOnTop": true
       }
     ],
     "security": {
