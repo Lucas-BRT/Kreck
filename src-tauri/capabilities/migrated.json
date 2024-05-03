@@ -12,6 +12,11 @@
     "app:default",
     "resources:default",
     "menu:default",
-    "tray:default"
+    "tray:default",
+    "tray:default",
+    "shell:allow-open",
+    "positioner:default",
+    "window:default",
+    "window:allow-start-dragging"
   ]
 }
