@@ -7,10 +7,6 @@
   },
   "app": {
     "withGlobalTauri": true,
-    "trayIcon": {
-      "iconPath": "./icons/icon.ico",
-      "iconAsTemplate": true
-    },
     "windows": [
       {
         "title": "kreck",

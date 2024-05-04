@@ -1,7 +1,17 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::{menu::{MenuBuilder, MenuItemBuilder}, tray::TrayIconBuilder, Manager, WindowEvent};
+use tauri::{image::Image, 
+            menu::{
+                MenuBuilder, 
+                MenuItemBuilder
+            }, 
+            tray::{
+                TrayIconBuilder,
+                ClickType
+            }, 
+            Manager, 
+            WindowEvent};
 use tauri_plugin_positioner::{WindowExt, Position};
 
 fn main() {
@@ -15,18 +25,29 @@ fn main() {
             let exit_kreck = MenuItemBuilder::new("Exit Kreck")
                     .build(app)?;
 
+            let tray_icon = Image::from_bytes(&include_bytes!("../icons/icon.ico").to_vec()).expect("failed to create icon from image ../icons/icon.ico");
+
             let menu_tray = MenuBuilder::new(app)
                     .item(&launch_kreck)
                     .item(&exit_kreck)
                     .build()?;
 
             TrayIconBuilder::new()
+                .icon(tray_icon)
                 .menu(&menu_tray)
                 .on_tray_icon_event(move |app, event| {
                     #[cfg(not(target_os = "linux"))]
                     {
-                        let mut win = app.get_webview_window("main").unwrap();
-                        let _ = win.as_ref().window().move_window(Position::TrayCenter);
+                        match event.click_type {
+                            ClickType::Left => {
+                                if let Some(webview_window) = app.app_handle().get_webview_window("main") {
+                                    tauri_plugin_positioner::on_tray_event(app.app_handle(), &event);
+                                    let _ = webview_window.show();
+                                    let _ = webview_window.as_ref().window().move_window(Position::TrayCenter);       
+                                }
+                            }
+                            _ => ()
+                        }
                     }
                })
                 .on_menu_event(move |app, event| {
