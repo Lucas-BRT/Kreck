@@ -27,8 +27,15 @@ fn main() {
 
             let tray_icon = Image::from_bytes(&include_bytes!("../icons/icon.ico").to_vec()).expect("failed to create icon from image ../icons/icon.ico");
 
+
+            #[cfg(target_os = "linux")]
             let menu_tray = MenuBuilder::new(app)
                     .item(&launch_kreck)
+                    .item(&exit_kreck)
+                    .build()?;
+
+            #[cfg(not(target_os = "linux"))]
+            let menu_tray = MenuBuilder::new(app)
                     .item(&exit_kreck)
                     .build()?;
 
@@ -54,13 +61,7 @@ fn main() {
                     if event.id() == launch_kreck.id() {
                         if let Some(webview_window) = app.get_webview_window("main") {
                             let win = webview_window.app_handle().get_webview_window("main").unwrap();
-                            
-                            #[cfg(not(target_os = "linux"))]
-                            let _ = win.as_ref().window().move_window(Position::TrayCenter);
-
-                            #[cfg(target_os = "linux")]
                             let _ = win.as_ref().window().move_window(Position::Center);
-
                             let _ = webview_window.show();
                             let _ = webview_window.set_focus();
                         };
