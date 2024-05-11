@@ -14,6 +14,16 @@ use tauri::{image::Image,
             WindowEvent};
 use tauri_plugin_positioner::{WindowExt, Position};
 
+#[tauri::command]
+async fn launch_server() {
+
+}
+
+#[tauri::command]
+fn hello_world() {
+    println!("hello world");
+}
+
 fn main() {
 
     tauri::Builder::default()
@@ -86,16 +96,17 @@ fn main() {
                                 webview_window.hide().unwrap();
                             };
                         },
-                        WindowEvent::Focused(false) => {
-                            if let Some(webview_window) = window.get_webview_window("main") {
-                                webview_window.hide().unwrap();
-                            };
-                        },
+                        // WindowEvent::Focused(false) => {
+                        //     if let Some(webview_window) = window.get_webview_window("main") {
+                        //         webview_window.hide().unwrap();
+                        //     };
+                        // },
                         _ => ()
                     }
                 }
             };
         })
+        .invoke_handler(tauri::generate_handler![hello_world])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

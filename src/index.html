@@ -6,10 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kreck</title>
     <script type="module" src="/main.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="" href="./VT323-Regular.ttf">
+
   </head>
   <body>
     <div class="main">
+      <div id="content">
+        
+        <div id="title">
+          Kreck
+        </div>
 
+        <form>
+          <input type="text" minlength="7" maxlength="15" size="15" name="ip" value="127.0.0.1" placeholder="IP"  >
+          <input type="" name="port" value="3333" placeholder="PORT">
+
+          <div id="content-button">
+            <button id="butao" type="button">Connect</button>
+          </div>
+        </form>
+        
+      </div>
     </div>
   </body>
 </html>
