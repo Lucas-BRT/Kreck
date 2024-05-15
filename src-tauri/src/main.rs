@@ -1,57 +1,20 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use kenku_control::{self, Controller};
-use rocket::{fs::FileServer, get, Ignite, Rocket, Shutdown};
+pub mod rocket_endpoints;
+pub mod tauri_commands;
+
 use std::sync::Arc;
 use tauri::{
-    async_runtime::{self, Mutex},
+    async_runtime::Mutex,
     image::Image,
     menu::{MenuBuilder, MenuItemBuilder},
     tray::TrayIconBuilder,
-    AppHandle, Manager, WindowEvent,
+    Manager, WindowEvent,
 };
 use tauri_plugin_positioner::{Position, WindowExt};
 
-#[derive(Default)]
-struct RocketShutdownHandle(pub Option<Shutdown>);
-
-#[tauri::command]
-async fn request_server_shutdown(app_state: AppHandle) {
-    let state = app_state.state::<Arc<Mutex<RocketShutdownHandle>>>();
-    let handle = state.try_lock().unwrap();
-
-    if let Some(handler) = &handle.0 {
-        handler.clone().notify();
-    }
-}
-
-#[tauri::command]
-async fn setup_server() -> Result<Rocket<Ignite>, rocket::Error> {
-    let rocket_config = rocket::Config::figment()
-        .merge(("address", "0.0.0.0"))
-        .merge(("port", 8000))
-        .merge(("workers", 4));
-
-    rocket::custom(rocket_config)
-        .mount("/", FileServer::from("../src"))
-        .ignite()
-        .await
-}
-
-#[tauri::command]
-async fn launch_server(app_state: AppHandle) {
-    let state = app_state.state::<Arc<Mutex<RocketShutdownHandle>>>();
-    let mut handle = state.try_lock().unwrap();
-    let server = setup_server().await.unwrap();
-    let shutdown_handle = server.shutdown();
-
-    handle.0 = Some(shutdown_handle);
-
-    async_runtime::spawn(async move {
-        server.launch().await.unwrap();
-    });
-}
+use tauri_commands::*;
 
 fn main() {
     tauri::Builder::default()
