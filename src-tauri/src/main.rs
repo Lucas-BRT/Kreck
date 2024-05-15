@@ -89,22 +89,20 @@ fn main() {
         })
         .on_window_event(|window, event| {
             match event {
-                window_event => {
-                    match window_event {
-                        WindowEvent::CloseRequested { api, .. } => {
-                            api.prevent_close();
-                            if let Some(webview_window) = window.get_webview_window("main") {
-                                webview_window.hide().unwrap();
-                            };
-                        }
-                        // WindowEvent::Focused(false) => {
-                        //     if let Some(webview_window) = window.get_webview_window("main") {
-                        //         webview_window.hide().unwrap();
-                        //     };
-                        // },
-                        _ => (),
+                window_event => match window_event {
+                    WindowEvent::CloseRequested { api, .. } => {
+                        api.prevent_close();
+                        if let Some(webview_window) = window.get_webview_window("main") {
+                            webview_window.hide().unwrap();
+                        };
                     }
-                }
+                    WindowEvent::Focused(false) => {
+                        if let Some(webview_window) = window.get_webview_window("main") {
+                            webview_window.hide().unwrap();
+                        };
+                    }
+                    _ => (),
+                },
             };
         })
         .invoke_handler(tauri::generate_handler![
