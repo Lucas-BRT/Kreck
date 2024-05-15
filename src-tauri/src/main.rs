@@ -14,6 +14,7 @@ use tauri::{
 };
 use tauri_plugin_positioner::{Position, WindowExt};
 
+use rocket_endpoints::RocketShutdownHandle;
 use tauri_commands::*;
 
 fn main() {

@@ -1,4 +1,3 @@
-use rocket::Shutdown;
 use std::sync::Arc;
 use tauri::{
     async_runtime::{self, Mutex},
@@ -6,9 +5,6 @@ use tauri::{
 };
 
 use super::rocket_endpoints::*;
-
-#[derive(Default)]
-pub struct RocketShutdownHandle(pub Option<Shutdown>);
 
 #[tauri::command]
 pub async fn request_server_shutdown(app_state: AppHandle) {
