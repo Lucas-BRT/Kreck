@@ -13,11 +13,11 @@ export function handleConnectButton(querySelector) {
     if (buttonState == "unselected") {
       updateButton(connectButton, "connect-button selected-connect-button", "Desconnect")
       buttonState = "selected"
-      shutdownServer()
+      launchServer()
     } else {
       updateButton(connectButton, 'connect-button', "Connect")
       buttonState = "unselected"
-      launchServer()
+      shutdownServer()
     }
   })
 }
