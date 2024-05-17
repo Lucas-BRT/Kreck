@@ -1,3 +1,4 @@
+use kenku_control::*;
 use rocket::{fs::FileServer, Ignite, Rocket, Shutdown};
 
 #[derive(Default)]
