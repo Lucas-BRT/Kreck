@@ -15,7 +15,6 @@ use tauri::{
 };
 use tauri_plugin_positioner::{Position, WindowExt};
 
-use kenku_remote_controller::KenkuControllerHandle;
 use rocket_endpoints::RocketShutdownHandle;
 use tauri_commands::*;
 
@@ -24,10 +23,8 @@ fn main() {
         .plugin(tauri_plugin_positioner::init())
         .setup(|app| {
             let shutdown_handle = Arc::new(Mutex::new(RocketShutdownHandle(None)));
-            let controller_handle = Arc::new(Mutex::new(KenkuControllerHandle(None)));
 
             app.manage(shutdown_handle);
-            app.manage(controller_handle);
 
             let launch_kreck = MenuItemBuilder::new("Launch Kreck").build(app)?;
             let exit_kreck = MenuItemBuilder::new("Exit Kreck").build(app)?;
