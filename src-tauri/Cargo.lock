@@ -1852,9 +1852,9 @@ dependencies = [
 
 [[package]]
 name = "kenku_control"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1619abd6fb9ba6816d574f55d7ea3cb0c90bd2bb338d29d09790d7adf0ce3767"
+checksum = "fe479ad9149ed93d62cf6ac1f784001c1c1943ae0611ebcd3f7e03c49b71eb6e"
 dependencies = [
  "reqwest 0.11.27",
  "serde",

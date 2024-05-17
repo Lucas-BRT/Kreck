@@ -10,7 +10,7 @@ pub async fn setup_server() -> Result<Rocket<Ignite>, rocket::Error> {
         .merge(("workers", 4));
 
     rocket::custom(rocket_config)
-        .mount("/", FileServer::from("../src"))
+        .mount("/", FileServer::from("../src-mobile"))
         .ignite()
         .await
 }
