@@ -10,7 +10,7 @@ use tauri::{
     async_runtime::Mutex,
     image::Image,
     menu::{MenuBuilder, MenuItemBuilder},
-    tray::TrayIconBuilder,
+    tray::{ClickType, TrayIconBuilder},
     Manager, WindowEvent,
 };
 use tauri_plugin_positioner::{Position, WindowExt};
