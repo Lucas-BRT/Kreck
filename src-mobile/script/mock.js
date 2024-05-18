@@ -9,7 +9,6 @@ fetch("https://jsonplaceholder.typicode.com/posts/", {
     console.log(data);
     const content_music = document.querySelector(".content");
     data.forEach((track) => {
-      console.log(track);
       let music = document.createElement("div");
       music.innerHTML = `
     <div class="music-informations ">
@@ -22,6 +21,17 @@ fetch("https://jsonplaceholder.typicode.com/posts/", {
     </div>`;
       music.className = "container-music";
       content_music.appendChild(music);
+
+      const playButton = music.querySelectorAll(".play-button");
+      playButton.forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelector(".sound-name").textContent = track.id;
+          document.querySelector(".sound-duration").textContent =
+            track.body.substring(0, 3);
+          const playbackbar = document.querySelector(".playbackbar");
+          playbackbar.style.display = "flex";
+        });
+      });
     });
   })
   .catch((error) => {
