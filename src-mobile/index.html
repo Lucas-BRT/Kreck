@@ -11,23 +11,30 @@
       <div class="navegation">
         <div class="navegation-background">
           <div class="navegation-button actived"><h1>Tracks</h1></div>
-          <div class="navegation-button"><h1>Sounds</h1></div>
+          <div class="navegation-button">
+            <h1><a href="./sounds.html">Sounds</a></h1>
+          </div>
         </div>
       </div>
       <div class="content"></div>
       <div class="playbackbar">
         <div class="playbackbar-informations">
-          <div class="sound-name">Sound name</div>
-          <div class="sound-duration">3:06</div>
+          <div class="playbackbarTrack-name">Sound name</div>
+          <div class="playbackbarTrack-duration">3:06</div>
         </div>
         <div class="playbackbar-buttons">
-          <button><img src="./icons/previous-icon.svg" alt="" /></button>
-          <button><img src="./icons/play-icon.svg" alt="" /></button>
-          <button><img src="./icons/next-icon.svg" alt="" /></button>
+          <button id="playbackbar-previous">
+            <img src="./icons/previous-icon.svg" alt="" />
+          </button>
+          <button id="playbackbar-play">
+            <img src="./icons/pause-icon.svg" alt="" />
+          </button>
+          <button id="playbackbar-next">
+            <img src="./icons/next-icon.svg" alt="" />
+          </button>
         </div>
       </div>
     </div>
-    <script src="./script/mock.js"></script>
-    <script src="./script/index.js" defer></script>
+    <script type="module" src="./script/index.js"></script>
   </body>
 </html>
