@@ -35,7 +35,6 @@ export async function putPlaylistPlayback_play() {
     method: "PUT",
   });
   const data = await response;
-  console.log(data);
   return data;
 }
 
@@ -48,7 +47,6 @@ export async function putPlaylistPlayback_pause() {
 export async function putPlaylistPlayback_next() {
   const response = await fetch("/playlist-playback-next", { method: "PUT" });
   const data = response;
-  console.log(data);
   return data;
 }
 
@@ -57,6 +55,5 @@ export async function putPlaylistPlayback_previous() {
     method: "PUT",
   });
   const data = response;
-  console.log(data);
   return data;
 }
