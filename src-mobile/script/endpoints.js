@@ -1,35 +1,62 @@
 export async function getTracks() {
-  return await fetch("/tracks")
-    .then(async (res) => await res.json())
-    .then((data) => data);
+  const response = await fetch("/tracks");
+  const data = await response.json();
+  return data;
 }
 
-export function getPlaylistPlayback() {
-  fetch("/playlist-playback")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+export async function getSounds() {
+  const response = await fetch("/sounds");
+  const data = await response.json();
+  return data;
 }
 
-export function putPlaylistPlaybacb_play() {
-  fetch("/playlist-playback", (method = "PUT"))
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+export async function getPlaylistPlayback() {
+  const response = await fetch("/playlist-playback");
+  const data = await response.json();
+  return data;
 }
 
-export function putPlaylistPlayback_pause() {
-  fetch("/playlist-playback")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+export async function getSoundboardPlayback() {
+  const response = await fetch("/soundboard-playback");
+  const data = await response.json();
+  return data;
 }
 
-export function postPlaylistPlayback_next() {
-  fetch("/playlist-playback")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+export async function putPlayTrack(trackId) {
+  const response = await fetch(`/play/${trackId}`, {
+    method: "PUT",
+  });
+  const data = await response;
+  return data;
 }
 
-export function postPlaylistPlayback_previous() {
-  fetch("/playlist-playback")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+export async function putPlaylistPlayback_play() {
+  const response = await fetch("/playlist-playback-play", {
+    method: "PUT",
+  });
+  const data = await response;
+  console.log(data);
+  return data;
+}
+
+export async function putPlaylistPlayback_pause() {
+  const reponse = await fetch("/playlist-playback-pause", { method: "PUT" });
+  const data = reponse;
+  return data;
+}
+
+export async function putPlaylistPlayback_next() {
+  const response = await fetch("/playlist-playback-next", { method: "PUT" });
+  const data = response;
+  console.log(data);
+  return data;
+}
+
+export async function putPlaylistPlayback_previous() {
+  const response = await fetch("/playlist-playback-previous", {
+    method: "PUT",
+  });
+  const data = response;
+  console.log(data);
+  return data;
 }
