@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/index.css" />
-    <title>Kreck</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="navegation">
-        <div class="navegation-background">
-          <div class="navegation-button actived"><h1>Tracks</h1></div>
-          <div class="navegation-button">
-            <h1><a href="./sounds.html">Sounds</a></h1>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#306EE7">
+  <link rel="stylesheet" href="./style/index.css" />
+  <link rel="manifest" href="./manifest.json">
+  <title>Kreck</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="navegation">
+      <div class="navegation-background">
+        <div class="navegation-button actived">
+          <h1>Tracks</h1>
         </div>
-      </div>
-      <div class="content"></div>
-      <div class="playbackbar">
-        <div class="playbackbar-informations">
-          <div class="playbackbarTrack-name">Sound name</div>
-          <div class="playbackbarTrack-duration">3:06</div>
-        </div>
-        <div class="playbackbar-buttons">
-          <button id="playbackbar-previous">
-            <img src="./icons/previous-icon.svg" alt="" />
-          </button>
-          <button id="playbackbar-play">
-            <img src="./icons/pause-icon.svg" alt="" />
-          </button>
-          <button id="playbackbar-next">
-            <img src="./icons/next-icon.svg" alt="" />
-          </button>
+        <div class="navegation-button">
+          <h1><a href="./sounds.html">Sounds</a></h1>
         </div>
       </div>
     </div>
-    <script type="module" src="./script/index.js"></script>
-  </body>
+    <div class="content"></div>
+    <div class="playbackbar">
+      <div class="playbackbar-informations">
+        <div class="playbackbarTrack-name">Sound name</div>
+        <div class="playbackbarTrack-duration">3:06</div>
+      </div>
+      <div class="playbackbar-buttons">
+        <button id="playbackbar-previous">
+          <img src="./icons/previous-icon.svg" alt="" />
+        </button>
+        <button id="playbackbar-play">
+          <img src="./icons/pause-icon.svg" alt="" />
+        </button>
+        <button id="playbackbar-next">
+          <img src="./icons/next-icon.svg" alt="" />
+        </button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./script/index.js"></script>
+</body>
+
 </html>
