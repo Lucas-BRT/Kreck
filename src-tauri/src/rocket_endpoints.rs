@@ -39,13 +39,16 @@ pub async fn get_soundboard_playback(controller: &State<Controller>) -> Result<V
 
 #[put("/play/<track_id>")]
 pub async fn play_track(controller: &State<Controller>, track_id: String) {
-    let tracks = controller.get_playlist().await.unwrap().tracks;
-
-    for track in tracks {
-        if track.id == track_id {
-            track.play(&controller).await.unwrap();
+    match controller.get_playlist().await {
+        Ok(tracks) => {
+            for track in tracks.tracks {
+                if track.id == track_id {
+                    track.play(&controller).await.unwrap();
+                }
+            }
         }
-    }
+        Err(e) => println!("{e}")
+    };
 }
 
 #[put("/playlist-playback-pause")]
