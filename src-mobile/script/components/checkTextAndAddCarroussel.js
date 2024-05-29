@@ -9,10 +9,20 @@ export function checkText(className) {
   elements.forEach((element) => {
     const textElement = element.textContent;
 
-    if (textElement.length > 21) {
-      element.className = `carrousel ${className} `;
-    } else {
-      element.className = `${className} `;
+    //this switch is to verify text sizes.
+    switch (true) {
+      case textElement.length > 21 && textElement.length < 40:
+        element.className = `carrousel-small ${className} `;
+        break;
+      case textElement.length > 40 && textElement.length < 90:
+        element.className = `carrousel-medium ${className} `;
+        break;
+      case textElement.length > 90:
+        element.className = `carrousel-large ${className} `;
+        break;
+
+      default:
+        element.className = `${className} `;
     }
   });
 }
