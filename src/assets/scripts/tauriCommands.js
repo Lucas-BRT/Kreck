@@ -8,3 +8,7 @@ export function shutdownServer() {
 export function launchServer(ip, port) {
   invoke("launch_server", { ip, port });
 }
+
+export async function getLocalIp() {
+  return await invoke("get_host_local_ip").then(ip => ip)
+}

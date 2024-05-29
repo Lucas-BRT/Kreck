@@ -1,3 +1,4 @@
+import { handleLocalIp } from './local_ip.js'
 import { shutdownServer, launchServer } from './tauriCommands.js'
 import { getIp, getPort } from './utils.js'
 
@@ -17,10 +18,12 @@ export function handleConnectButton(querySelector) {
       const ip = getIp()
       const port = getPort()
       launchServer(ip, port)
+      handleLocalIp()
     } else {
       updateButton(connectButton, 'connect-button', "Connect")
       buttonState = "unselected"
       shutdownServer()
+      handleLocalIp()
     }
   })
 }
