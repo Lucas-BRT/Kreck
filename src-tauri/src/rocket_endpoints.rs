@@ -6,31 +6,35 @@ use serde_json::{json, Value};
 pub struct RocketShutdownHandle(pub Option<Shutdown>);
 
 #[get("/tracks")]
-pub async fn get_tracks(controller: &State<Controller>) -> Value {
-    let tracks = controller.get_playlist().await.unwrap();
-
-    json!(tracks)
+pub async fn get_tracks(controller: &State<Controller>) -> Result<Value, ()> {
+    match controller.get_playlist().await {
+        Ok(tracks) => Ok(json!(tracks)),
+        Err(e) => Err(println!("{e}"))
+    }
 }
 
 #[get("/sounds")]
-pub async fn get_sounds(controller: &State<Controller>) -> Value {
-    let sounds = controller.get_soundboard().await.unwrap();
-
-    json!(sounds)
+pub async fn get_sounds(controller: &State<Controller>) -> Result<Value, ()> {
+    match controller.get_soundboard().await {
+        Ok(sounds) => Ok(json!(sounds)),
+        Err(e) => Err(println!("{e}"))
+    }
 }
 
 #[get("/playlist-playback")]
-pub async fn get_playlist_playback(controller: &State<Controller>) -> Value {
-    let playback = controller.get_playlist_playback().await.unwrap();
-
-    json!(playback)
+pub async fn get_playlist_playback(controller: &State<Controller>) -> Result<Value, ()> {
+    match controller.get_playlist_playback().await {
+        Ok(playback) => Ok(json!(playback)),
+        Err(e) => Err(println!("{e}"))
+    }
 }
 
 #[get("/soundboard-playback")]
-pub async fn get_soundboard_playback(controller: &State<Controller>) -> Value {
-    let soundboard = controller.get_soundboard_playback().await.unwrap();
-
-    json!(soundboard)
+pub async fn get_soundboard_playback(controller: &State<Controller>) -> Result<Value, ()> {
+    match controller.get_soundboard_playback().await {
+        Ok(soundboard) => Ok(json!(soundboard)),
+        Err(e) => Err(println!("{e}"))
+    }
 }
 
 #[put("/play/<track_id>")]
