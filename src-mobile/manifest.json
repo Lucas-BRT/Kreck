@@ -8,9 +8,15 @@
   "description": "A mobile manager for Kenku FM",
   "icons": [
     {
-      "src": "./icons/play-icon.svg",
-      "sizes": "192x192",
+      "src": "./icons/app_icons/512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "./icons/app_icons/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
