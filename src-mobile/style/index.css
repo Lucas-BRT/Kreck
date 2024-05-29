@@ -95,8 +95,16 @@ a {
   margin-left: 7%;
 }
 
-.carrousel {
-  animation: carrousel 15s linear infinite;
+.carrousel-small {
+  animation: carrousel-small 15s linear infinite;
+}
+
+.carrousel-medium {
+  animation: carrousel-medium 25s linear infinite;
+}
+
+.carrousel-large {
+  animation: carrousel-large 30s linear infinite;
 }
 
 .track-name {
@@ -178,20 +186,65 @@ button img {
   width: 45%;
 }
 
-@keyframes carrousel {
+@keyframes carrousel-small {
   0% {
-    transform: translate(20%, 0);
+    transform: translate(0%, 0);
   }
-  50% {
-    transform: translate(-150%, 0);
+  15% {
+    transform: translate(0%, 0);
   }
-  51% {
+  54% {
+    transform: translate(-170%, 0);
+  }
+  54.5% {
     transform: translate(100050%, 0);
   }
-  52% {
+  55% {
     transform: translate(100%, 0);
   }
-  100% {
-    transform: translate(20%, 0);
+  77% {
+    transform: translate(0%, 0);
+  }
+}
+
+@keyframes carrousel-medium {
+  0% {
+    transform: translate(0%, 0);
+  }
+  15% {
+    transform: translate(0%, 0);
+  }
+  54% {
+    transform: translate(-370%, 0);
+  }
+  54.5% {
+    transform: translate(100050%, 0);
+  }
+  55% {
+    transform: translate(100%, 0);
+  }
+  77% {
+    transform: translate(0%, 0);
+  }
+}
+
+@keyframes carrousel-large {
+  0% {
+    transform: translate(0%, 0);
+  }
+  15% {
+    transform: translate(0%, 0);
+  }
+  54% {
+    transform: translate(-470%, 0);
+  }
+  54.5% {
+    transform: translate(100050%, 0);
+  }
+  55% {
+    transform: translate(100%, 0);
+  }
+  77% {
+    transform: translate(0%, 0);
   }
 }
