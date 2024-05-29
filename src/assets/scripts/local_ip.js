@@ -5,7 +5,11 @@ export async function handleLocalIp() {
 
   if (ipContainer.className == "invisible-local-ip") {
     ipContainer.className = "visible-local-ip"
-    ipContainer.innerHTML = `<span>access http://${await getLocalIp()}:8000 on your mobile device</span>`
+    ipContainer.innerHTML = `<p>access 
+      <span class="local-address">
+        http://${await getLocalIp()}:8000
+      </span> 
+      on your mobile device </p>`
   } else {
     ipContainer.className = "invisible-local-ip"
   }
