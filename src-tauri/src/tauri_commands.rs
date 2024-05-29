@@ -6,6 +6,12 @@ use tauri::{
 
 use super::rocket_endpoints::*;
 use crate::kenku_remote_controller::setup_kenku_controller;
+use local_ip_address::local_ip;
+
+#[tauri::command]
+pub fn get_host_local_ip() -> String {
+    local_ip().unwrap().to_string()
+}
 
 #[tauri::command]
 pub async fn request_server_shutdown(app_state: AppHandle) {

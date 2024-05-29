@@ -109,7 +109,8 @@ fn main() {
         })
         .invoke_handler(tauri::generate_handler![
             launch_server,
-            request_server_shutdown
+            request_server_shutdown,
+            get_host_local_ip
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
