@@ -53,30 +53,34 @@ pub async fn play_track(controller: &State<Controller>, track_id: String) {
 
 #[put("/playlist-playback-pause")]
 pub async fn pause_playback(controller: &State<Controller>) {
-    playlist::playback::playback_pause(&controller)
-        .await
-        .unwrap();
+    match playlist::playback::playback_pause(&controller).await {
+        Ok(_) => println!("PAUSE PLAYBACK"),
+        Err(e) => println!("{e}")
+    }
 }
 
 #[put("/playlist-playback-play")]
 pub async fn play_playback(controller: &State<Controller>) {
-    playlist::playback::playback_play(&controller)
-        .await
-        .unwrap();
+    match playlist::playback::playback_play(&controller).await {
+        Ok(_) => println!("PLAY PLAYBACK"),
+        Err(e) => println!("{e}")
+    }
 }
 
 #[put("/playlist-playback-next")]
 pub async fn next_playback(controller: &State<Controller>) {
-    playlist::playback::playback_next(&controller)
-        .await
-        .unwrap();
+    match playlist::playback::playback_next(&controller).await {
+        Ok(_) => println!("NEXT PLAYBACK"),
+        Err(e) => println!("{e}")
+    }
 }
 
 #[put("/playlist-playback-previous")]
 pub async fn previous_playback(controller: &State<Controller>) {
-    playlist::playback::playback_previous(&controller)
-        .await
-        .unwrap();
+    match playlist::playback::playback_previous(&controller).await {
+        Ok(_) => println!("PREVIOUS PLAYBACK"),
+        Err(e) => println!("{e}")
+    }
 }
 
 pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rocket::Error> {
