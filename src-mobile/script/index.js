@@ -5,7 +5,7 @@ import { convertTracks } from "./handlers/handleTracks.js";
 import { handlePlayPlaybackbar } from "./handlers/handlePlayPlaybackbar.js";
 import { handleNextPlaybackbar } from "./handlers/handleNextPlaybackbar.js";
 import { handlePreviousPlaybackbar } from "./handlers/handlePreviousPlaybackbar.js";
-import { checkText } from "./components/checkTextAndAddCarroussel.js";
+import { checkTrackText } from "./components/checkTrackTextAndAddCarroussel.js";
 
 const tracks = await getTracks();
 const convertedTracks = convertTracks(tracks);
@@ -15,4 +15,4 @@ handlePlayButton(convertedTracks);
 handlePlayPlaybackbar();
 handleNextPlaybackbar();
 handlePreviousPlaybackbar();
-checkText("track-name");
+checkTrackText();
