@@ -29,8 +29,8 @@ fn main() {
             let launch_kreck = MenuItemBuilder::new("Launch Kreck").build(app)?;
             let exit_kreck = MenuItemBuilder::new("Exit Kreck").build(app)?;
 
-            let tray_icon = Image::from_bytes(&include_bytes!("../icons/icon.ico").to_vec())
-                .expect("failed to create icon from image ../icons/icon.ico");
+            let tray_icon = Image::from_bytes(&include_bytes!("../icons/128x128.png").to_vec())
+                .expect("failed to create icon");
 
             #[cfg(target_os = "linux")]
             let menu_tray = MenuBuilder::new(app)
