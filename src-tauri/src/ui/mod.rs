@@ -107,7 +107,7 @@ pub fn render_tauri_app() {
             .invoke_handler(tauri::generate_handler![
                 launch_server,
                 request_server_shutdown,
-                get_host_local_ip
+                get_host_local_address
             ])
             .run(tauri::generate_context!())
             .expect("error while running tauri application");

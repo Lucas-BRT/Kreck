@@ -1,16 +1,15 @@
 use std::{sync::Arc, u16};
+use crate::server::*;
+use crate::controller::setup_kenku_controller;
+use crate::utils::local_ip::get_local_ip;
 use tauri::{
     async_runtime::{self, Mutex},
     AppHandle, Manager,
 };
 
-use crate::server::*;
-use crate::controller::setup_kenku_controller;
-use local_ip_address::local_ip;
-
 #[tauri::command]
-pub fn get_host_local_ip() -> String {
-    local_ip().unwrap().to_string()
+pub fn get_host_local_address() -> Result<String, String> {
+    get_local_ip() 
 }
 
 #[tauri::command]

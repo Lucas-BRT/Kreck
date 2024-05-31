@@ -6,7 +6,7 @@ mod controller;
 mod server;
 mod errors;
 mod ui;
-
+mod utils;
 
 fn main() {
     ui::render_tauri_app();
