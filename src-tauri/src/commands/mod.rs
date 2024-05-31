@@ -4,8 +4,8 @@ use tauri::{
     AppHandle, Manager,
 };
 
-use super::rocket_endpoints::*;
-use crate::kenku_remote_controller::setup_kenku_controller;
+use crate::server::*;
+use crate::controller::setup_kenku_controller;
 use local_ip_address::local_ip;
 
 #[tauri::command]

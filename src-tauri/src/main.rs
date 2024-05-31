@@ -1,9 +1,9 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-pub mod kenku_remote_controller;
-pub mod rocket_endpoints;
-pub mod tauri_commands;
+mod commands;
+mod controller;
+mod server;
 
 use std::sync::Arc;
 use tauri::{
@@ -14,9 +14,8 @@ use tauri::{
     Manager, WindowEvent,
 };
 use tauri_plugin_positioner::{Position, WindowExt};
-
-use rocket_endpoints::RocketShutdownHandle;
-use tauri_commands::*;
+use server::RocketShutdownHandle;
+use commands::*;
 
 fn main() {
     tauri::Builder::default()
