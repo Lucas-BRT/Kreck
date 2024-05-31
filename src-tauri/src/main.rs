@@ -4,6 +4,7 @@
 mod commands;
 mod controller;
 mod server;
+mod errors;
 
 use std::sync::Arc;
 use tauri::{
