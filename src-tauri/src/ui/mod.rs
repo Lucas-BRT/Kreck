@@ -25,7 +25,7 @@ pub fn render_tauri_app() {
 
                 let launch_kreck = MenuItemBuilder::new("Launch Kreck").build(app).expect("failed to create 'Launch Kreck' menu item");
                 let exit_kreck = MenuItemBuilder::new("Exit Kreck").build(app).expect("failed to create 'Exit Kreck' menu item");
-                let tray_icon = Image::from_bytes(&include_bytes!("../../icons/icon.ico").to_vec()).expect("failed to create icon from image ../icons/icon.ico");
+                let tray_icon = Image::from_bytes(&include_bytes!("../../icons/128x128.png").to_vec()).expect("failed to create icon from image ../icons/128x128.png");
 
                 #[cfg(target_os = "linux")]
                 let menu_tray = MenuBuilder::new(app)
