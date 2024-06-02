@@ -1,5 +1,5 @@
 use crate::commands::*;
-use crate::server::RocketShutdownHandle;
+use crate::utils::aplication_state::RocketShutdownHandle;
 
 use std::sync::Arc;
 use tauri_plugin_positioner::{Position, WindowExt};
