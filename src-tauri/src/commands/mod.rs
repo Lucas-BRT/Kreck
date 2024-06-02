@@ -1,7 +1,8 @@
-use std::{sync::Arc, u16};
-use crate::server::*;
+use crate::utils::aplication_state::RocketShutdownHandle;
+use crate::server::setup_server;
 use crate::controller::setup_kenku_controller;
 use crate::utils::local_ip::get_local_ip;
+use std::sync::Arc;
 use tauri::{
     async_runtime::{self, Mutex},
     AppHandle, Manager,
