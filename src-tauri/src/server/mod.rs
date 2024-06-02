@@ -1,11 +1,9 @@
 mod endpoints;
 
-use kenku_control::*;
-use rocket::{fs::FileServer, routes, Ignite, Rocket, Shutdown};
+use kenku_control::Controller;
+use rocket::{fs::FileServer, routes, Ignite, Rocket};
 use endpoints::*;
 
-#[derive(Default)]
-pub struct RocketShutdownHandle(pub Option<Shutdown>);
 
 pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rocket::Error> {
     let rocket_config = rocket::Config::figment()
