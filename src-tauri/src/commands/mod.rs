@@ -1,16 +1,16 @@
-use std::{sync::Arc, u16};
+use crate::utils::aplication_state::RocketShutdownHandle;
+use crate::server::setup_server;
+use crate::controller::setup_kenku_controller;
+use crate::utils::local_ip::get_local_ip;
+use std::sync::Arc;
 use tauri::{
     async_runtime::{self, Mutex},
     AppHandle, Manager,
 };
 
-use super::rocket_endpoints::*;
-use crate::kenku_remote_controller::setup_kenku_controller;
-use local_ip_address::local_ip;
-
 #[tauri::command]
-pub fn get_host_local_ip() -> String {
-    local_ip().unwrap().to_string()
+pub fn get_host_local_address() -> Result<String, String> {
+    get_local_ip() 
 }
 
 #[tauri::command]
@@ -24,10 +24,10 @@ pub async fn request_server_shutdown(app_state: AppHandle) {
 }
 
 #[tauri::command]
-pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) {
+pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) -> Result<(), String> {
     let rocket_state = app_state.state::<Arc<Mutex<RocketShutdownHandle>>>();
 
-    let controller = setup_kenku_controller(ip, port).unwrap();
+    let controller = setup_kenku_controller(ip, port).await?;
 
     let mut rocket_handle = rocket_state.try_lock().unwrap();
     let server = setup_server(controller).await.unwrap();
@@ -36,6 +36,11 @@ pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) {
     rocket_handle.0 = Some(shutdown_handle);
 
     async_runtime::spawn(async move {
-        server.launch().await.unwrap();
+        match server.launch().await {
+            Ok(_) => println!("Rocket launched successfully!"),
+            Err(e) => println!("Failed to launch Rocket!: {e}")
+        }
     });
+
+    Ok(())
 }
