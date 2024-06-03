@@ -10,5 +10,5 @@ export function launchServer(ip, port) {
 }
 
 export async function getLocalIp() {
-  return await invoke("get_host_local_ip").then(ip => ip)
+  return await invoke("get_host_local_address").then(ip => ip)
 }
