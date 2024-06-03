@@ -5,6 +5,10 @@ export function shutdownServer() {
   invoke("request_server_shutdown", {});
 }
 
-export function launchServer() {
-  invoke("launch_server", {});
+export function launchServer(ip, port) {
+  invoke("launch_server", { ip, port });
+}
+
+export async function getLocalIp() {
+  return await invoke("get_host_local_address").then(ip => ip)
 }

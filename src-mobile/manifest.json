@@ -1,0 +1,22 @@
+{
+  "name": "Kreck",
+  "short_name": "Kreck",
+  "start_url": ".",
+  "theme_color": "#306EE7",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "A mobile manager for Kenku FM",
+  "icons": [
+    {
+      "src": "./icons/app_icons/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/app_icons/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
