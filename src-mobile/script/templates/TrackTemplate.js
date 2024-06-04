@@ -8,13 +8,13 @@ export function getTrackTemplate(track) {
   container.innerHTML = `
     <div class="track-informations ">
      <div>
-      <div class="content-track-name">${track.title}</div>
+      <div class="trackSection-track-name">${track.title}</div>
       </div>
       <div>
-      <div class="content-track-playlist">${track.playlist}</div>
+      <div class="trackSection-track-playlist">${track.playlist}</div>
       </div>
      </div>
-      <div class="content-track-player">  
+      <div class="trackSection-track-player">  
         <div class="play-button" id="${track.id}">
         <div class="player-button-triangle"></div>
         </div>

@@ -1,4 +1,4 @@
-import { checkplaybackbarText } from "../components/checkPlaybackbarTextAndAddCarousel.js";
+import { checkTextAndAddCarousel } from "../components/checkTextAndAddCarousel.js";
 import { renderPlaybackbar } from "../components/renderPlaybackbar.js";
 import { putPlayTrack } from "../endpoints.js";
 import { playTrackPlaybackbar } from "./handlePlayPlaybackbar.js";
@@ -10,7 +10,7 @@ export function handlePlayButton(convertedTrack) {
     button.addEventListener("click", () => {
       putPlayTrack(track.id);
       renderPlaybackbar(track.title);
-      checkplaybackbarText();
+      checkTextAndAddCarousel("playbackbar");
       playTrackPlaybackbar();
     });
   });

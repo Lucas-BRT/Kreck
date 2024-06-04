@@ -100,12 +100,12 @@ a {
   margin-left: 1%;
 }
 
-.track-name-fade {
+.trackSection-name-fade {
   position: relative;
 }
 
-.track-name-fade::before,
-.track-name-fade::after {
+.trackSection-name-fade::before,
+.trackSection-name-fade::after {
   content: "";
   position: absolute;
   width: 50px;
@@ -113,7 +113,7 @@ a {
   z-index: 2;
 }
 
-.track-name-fade::before {
+.trackSection-name-fade::before {
   margin-left: -1px;
   left: 0;
   background: linear-gradient(
@@ -123,7 +123,7 @@ a {
   );
 }
 
-.track-name-fade::after {
+.trackSection-name-fade::after {
   margin-right: -1px;
   top: 5%;
   right: 0;
@@ -134,30 +134,30 @@ a {
   );
 }
 
-.content-track-name {
+.trackSection-track-name {
   width: 100%;
   white-space: nowrap;
   font-size: 110%;
 }
 
-.content-track-playlist {
+.trackSection-track-playlist {
   font-size: 110%;
 }
-.content-track-player {
+.trackSection-track-player {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30%;
 }
-.carousel-small-track {
+.carousel-small-trackSection {
   animation: carousel-small 20s linear infinite;
 }
 
-.carousel-medium-track {
+.carousel-medium-trackSection {
   animation: carousel-medium 25s linear infinite;
 }
 
-.carousel-large-track {
+.carousel-large-trackSection {
   animation: carousel-large 30s linear infinite;
 }
 
