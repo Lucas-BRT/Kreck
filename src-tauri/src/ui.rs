@@ -1,5 +1,5 @@
 use crate::commands::*;
-use crate::utils::aplication_state::RocketShutdownHandle;
+use crate::utils::RocketShutdownHandle;
 
 use std::sync::Arc;
 use tauri::{
@@ -28,7 +28,7 @@ pub fn render_tauri_app() {
             let exit_kreck = MenuItemBuilder::new("Exit Kreck")
                 .build(app)
                 .expect("failed to create 'Exit Kreck' menu item");
-            let tray_icon = Image::from_bytes(include_bytes!("../../icons/128x128.png").as_ref())
+            let tray_icon = Image::from_bytes(include_bytes!("../icons/128x128.png").as_ref())
                 .expect("failed to create icon from image ../icons/128x128.png");
 
             #[cfg(target_os = "linux")]

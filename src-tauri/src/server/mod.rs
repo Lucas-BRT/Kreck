@@ -1,9 +1,8 @@
 mod endpoints;
 
+use endpoints::*;
 use kenku_control::Controller;
 use rocket::{fs::FileServer, routes, Ignite, Rocket};
-use endpoints::*;
-
 
 pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rocket::Error> {
     let rocket_config = rocket::Config::figment()

@@ -1,7 +1,7 @@
-use crate::utils::aplication_state::RocketShutdownHandle;
-use crate::server::setup_server;
 use crate::controller::setup_kenku_controller;
-use crate::utils::local_ip::get_local_ip;
+use crate::server::setup_server;
+use crate::utils::get_local_ip;
+use crate::utils::RocketShutdownHandle;
 use std::sync::Arc;
 use tauri::{
     async_runtime::{self, Mutex},
@@ -10,7 +10,7 @@ use tauri::{
 
 #[tauri::command]
 pub fn get_host_local_address() -> Result<String, String> {
-    get_local_ip() 
+    get_local_ip()
 }
 
 #[tauri::command]
@@ -38,7 +38,7 @@ pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) -> Resul
     async_runtime::spawn(async move {
         match server.launch().await {
             Ok(_) => println!("Rocket launched successfully!"),
-            Err(e) => println!("Failed to launch Rocket!: {e}")
+            Err(e) => println!("Failed to launch Rocket!: {e}"),
         }
     });
 
