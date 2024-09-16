@@ -2,11 +2,12 @@ use kenku_control::{playlist::playback::*, Controller};
 use rocket::{get, put, State};
 use serde_json::{json, Value};
 
-pub mod track {
+#[allow(dead_code)]
+pub mod tracks {
     use super::*;
 
     #[get("/tracks")]
-    pub async fn get_tracks(controller: &State<Controller>) -> Result<Value, ()> {
+    pub async fn get(controller: &State<Controller>) -> Result<Value, ()> {
         match controller.get_playlist().await {
             Ok(tracks) => Ok(json!(tracks)),
             Err(e) => Err(println!("{e}")),
@@ -14,7 +15,7 @@ pub mod track {
     }
 
     #[put("/tracks/play/<track_id>")]
-    pub async fn play_track(controller: &State<Controller>, track_id: String) {
+    pub async fn play(controller: &State<Controller>, track_id: String) {
         match controller.get_playlist().await {
             Ok(tracks) => {
                 for track in tracks.tracks {
@@ -28,11 +29,12 @@ pub mod track {
     }
 }
 
+#[allow(dead_code)]
 pub mod playback {
     use super::*;
 
     #[get("/playlist")]
-    pub async fn get_playlist_playback(controller: &State<Controller>) -> Result<Value, ()> {
+    pub async fn get(controller: &State<Controller>) -> Result<Value, ()> {
         match controller.get_playlist_playback().await {
             Ok(playback) => Ok(json!(playback)),
             Err(e) => Err(println!("{e}")),
@@ -40,7 +42,7 @@ pub mod playback {
     }
 
     #[put("/playlist/pause")]
-    pub async fn pause_playback(controller: &State<Controller>) {
+    pub async fn pause(controller: &State<Controller>) {
         match playback_pause(controller).await {
             Ok(_) => println!("PAUSE PLAYBACK"),
             Err(e) => println!("{e}"),
@@ -48,7 +50,7 @@ pub mod playback {
     }
 
     #[put("/playlist/play")]
-    pub async fn play_playback(controller: &State<Controller>) {
+    pub async fn play(controller: &State<Controller>) {
         match playback_play(controller).await {
             Ok(_) => println!("PLAY PLAYBACK"),
             Err(e) => println!("{e}"),
@@ -56,7 +58,7 @@ pub mod playback {
     }
 
     #[put("/playlist/next")]
-    pub async fn next_playback(controller: &State<Controller>) {
+    pub async fn next(controller: &State<Controller>) {
         match playback_next(controller).await {
             Ok(_) => println!("NEXT PLAYBACK"),
             Err(e) => println!("{e}"),
@@ -64,7 +66,7 @@ pub mod playback {
     }
 
     #[put("/playlist/previous")]
-    pub async fn previous_playback(controller: &State<Controller>) {
+    pub async fn previous(controller: &State<Controller>) {
         match playback_previous(controller).await {
             Ok(_) => println!("PREVIOUS PLAYBACK"),
             Err(e) => println!("{e}"),
@@ -72,11 +74,12 @@ pub mod playback {
     }
 }
 
-pub mod sound {
+#[allow(dead_code)]
+pub mod sounds {
     use super::*;
 
     #[get("/sounds")]
-    pub async fn get_sounds(controller: &State<Controller>) -> Result<Value, ()> {
+    pub async fn get(controller: &State<Controller>) -> Result<Value, ()> {
         match controller.get_soundboard().await {
             Ok(sounds) => Ok(json!(sounds)),
             Err(e) => Err(println!("{e}")),
@@ -84,7 +87,7 @@ pub mod sound {
     }
 
     #[put("/sounds/play/<sound_id>")]
-    pub async fn play_sound(controller: &State<Controller>, sound_id: String) {
+    pub async fn play(controller: &State<Controller>, sound_id: String) {
         match controller.get_soundboard().await {
             Ok(sounds) => {
                 for sound in sounds.sounds {
@@ -98,7 +101,7 @@ pub mod sound {
     }
 
     #[put("/sounds/stop/<sound_id>")]
-    pub async fn stop_sound(controller: &State<Controller>, sound_id: String) {
+    pub async fn stop(controller: &State<Controller>, sound_id: String) {
         match controller.get_soundboard().await {
             Ok(sounds) => {
                 for sound in sounds.sounds {
@@ -112,10 +115,11 @@ pub mod sound {
     }
 }
 
-pub mod soundbaord {
+#[allow(dead_code)]
+pub mod soundboard {
     use super::*;
     #[get("/soundboard")]
-    pub async fn get_soundboard_playback(controller: &State<Controller>) -> Result<Value, ()> {
+    pub async fn get(controller: &State<Controller>) -> Result<Value, ()> {
         match controller.get_soundboard_playback().await {
             Ok(soundboard) => Ok(json!(soundboard)),
             Err(e) => Err(println!("{e}")),
