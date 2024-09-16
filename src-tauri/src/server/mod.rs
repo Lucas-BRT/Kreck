@@ -1,6 +1,6 @@
 mod endpoints;
 
-use endpoints::*;
+use endpoints::{playback, sound};
 use kenku_control::Controller;
 use rocket::{fs::FileServer, routes, Ignite, Rocket};
 
@@ -13,20 +13,7 @@ pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rock
     rocket::custom(rocket_config)
         .manage(controller)
         .mount("/", FileServer::from("../src-mobile"))
-        .mount(
-            "/",
-            routes![
-                get_tracks,
-                get_sounds,
-                get_playlist_playback,
-                get_soundboard_playback,
-                play_track,
-                pause_playback,
-                play_playback,
-                next_playback,
-                previous_playback
-            ],
-        )
+        .mount("/", routes![])
         .ignite()
         .await
 }
