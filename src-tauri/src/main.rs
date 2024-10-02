@@ -3,7 +3,6 @@
 
 mod commands;
 mod controller;
-mod errors;
 mod server;
 mod ui;
 mod utils;
