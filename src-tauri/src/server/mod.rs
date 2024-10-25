@@ -19,6 +19,7 @@ pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rock
                 endpoints::tracks::play,
                 endpoints::sounds::get,
                 endpoints::sounds::play,
+                endpoints::sounds::stop,
                 endpoints::playback::get,
                 endpoints::playback::play,
                 endpoints::playback::pause,
