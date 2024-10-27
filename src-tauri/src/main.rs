@@ -4,7 +4,6 @@
 mod commands;
 mod controller;
 mod server;
-mod errors;
 mod ui;
 mod utils;
 
