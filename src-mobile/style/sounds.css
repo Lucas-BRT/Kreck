@@ -1,0 +1,28 @@
+:root {
+  --azul-tatu: #306ee7;
+  --cinza-claro: #404451;
+  --cinza-escuro: #222222;
+}
+
+* {
+  font-family: "KodeMono", monospace;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cinza-escuro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: var(--cinza-escuro);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+  width: 98%;
+}
