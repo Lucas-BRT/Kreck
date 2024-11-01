@@ -74,3 +74,50 @@ body {
   font-weight: bold;
   user-select: none;
 }
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .container-sound {
+    height: 120px;
+  }
+  .sound-name h1 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1280px) {
+  .content {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .container-sound {
+    height: 150px;
+  }
+  .sound-name h1 {
+    font-size: 25px;
+  }
+}
+@media (min-width: 1281px) and (max-width: 1980px) {
+  .content {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .container-sound {
+    height: 150px;
+  }
+  .sound-name h1 {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1981px) {
+  .content {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .container-sound {
+    height: 150px;
+  }
+  .sound-name h1 {
+    font-size: 30px;
+  }
+}
