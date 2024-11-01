@@ -9,6 +9,16 @@ export async function getSounds() {
   const data = await response.json();
   return data;
 }
+export async function putPlaySound(soundId) {
+  const response = await fetch(`/sounds/play/${soundId}`, {
+    method: "PUT",
+  });
+  return response;
+}
+export async function putStopSound(soundId) {
+  const response = await fetch(`/sounds/stop/${soundId}`, { method: "PUT" });
+  return response;
+}
 
 export async function getPlaylistPlayback() {
   const response = await fetch("/playlist-playback");
