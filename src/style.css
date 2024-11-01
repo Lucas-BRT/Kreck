@@ -1,0 +1,103 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --kreck-blue: #306ee7;
+    --kreck-dark-blue: #2557bb;
+    --gray: #404451;
+    --dark-gray: #222222;
+}
+
+@font-face {
+    font-family: "KodeMono";
+    src: url("./assets/fonts/KodeMono-VariableFont_wght.ttf");
+}
+
+span {
+    font-family: "KodeMono";
+    color: white;
+}
+
+#main-window {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: top;
+    justify-content: center;
+
+    #visible-window {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 250px;
+        height: fit-content;
+
+        border-radius: 8px;
+        padding: 6px;
+        gap: 8px;
+
+        background-color: var(--dark-gray);
+
+        header {
+            font-size: 40px;
+            font-weight: 600;
+
+            span:hover {
+                text-shadow: 0 0 15px var(--kreck-blue);
+            }
+
+            span:focus {
+                border: none;
+                outline: none;
+                text-shadow: 0 0 15px var(--kreck-blue);
+                transition: 0.5s;
+            }
+        }
+
+        main {
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 22px;
+                height: 22px;
+            }
+
+            .connect-button {
+                padding: 0 42px;
+                border-radius: 8px;
+                background-color: var(--kreck-blue);
+                border: none;
+                height: 42px;
+                font-size: 14px;
+            }
+
+            button {
+                display: flex;
+                align-items: center;
+                background-color: var(--kreck-dark-blue);
+                border: none;
+                border-radius: 8px;
+                padding: 4px;
+            }
+
+            button:hover {
+                box-shadow: 0 0px 10px var(--kreck-blue);
+                cursor: pointer;
+            }
+
+            button:focus {
+                border: none;
+                outline: none;
+                box-shadow: 0 0px 10px var(--kreck-blue);
+                transition: 0.5s;
+            }
+        }
+    }
+}

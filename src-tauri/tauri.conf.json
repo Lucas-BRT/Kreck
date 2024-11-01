@@ -11,7 +11,7 @@
       {
         "title": "kreck",
         "width": 260,
-        "height": 250,
+        "height": 120,
         "skipTaskbar": true,
         "resizable": false,
         "minimizable": false,
