@@ -20,8 +20,8 @@ export function handleConnectButton(querySelector) {
         if (buttonState == "unselected") {
             updateButton(
                 connectButton,
-                "connect-button selected-connect-button",
-                "Desconnect"
+                "selected-connect-button",
+                "DISCONNECT"
             );
             buttonState = "selected";
             const ip = getIp();
@@ -29,7 +29,7 @@ export function handleConnectButton(querySelector) {
             launchServer(ip, port);
             handleLocalIp();
         } else {
-            updateButton(connectButton, "connect-button", "Connect");
+            updateButton(connectButton, "unselected-connect-button", "CONNECT");
             buttonState = "unselected";
             shutdownServer();
             handleLocalIp();
