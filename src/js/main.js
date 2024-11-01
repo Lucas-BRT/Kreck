@@ -1,7 +1,9 @@
-import { handleConnectButton } from './button.js';
-import { handleIpInput, handlePortInput } from './handleInput.js';
+import {
+    handleConnectButton,
+    handleQrCodeButton,
+    handleConfigButton,
+} from "./handlers.js";
 
-handleConnectButton("#connect-button")
-handleIpInput(".ip-entry")
-handlePortInput("#port")
-
+handleConnectButton();
+handleQrCodeButton();
+handleConfigButton();
