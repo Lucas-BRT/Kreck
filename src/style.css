@@ -69,7 +69,7 @@ span {
                 height: 22px;
             }
 
-            .connect-button {
+            #connect-button {
                 padding: 0 42px;
                 border-radius: 8px;
                 background-color: var(--kreck-blue);

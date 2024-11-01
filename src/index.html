@@ -4,20 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kreck</title>
-    <script type="module" src="assets/scripts/main.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="js/main.js" defer></script>
   </head>
-
   <body>
     <div id="main-window">
       <div id="visible-window">
         <header><span>Kreck</span></header>
         <main>
-          <button>
+          <button id="qr-code-button">
             <img src="./assets/images/camera-icon.svg" alt="" />
           </button>
-          <button class="connect-button"><span>CONNECT</span></button>
-          <button>
+          <button id="connect-button"><span>CONNECT</span></button>
+          <button id="config-button">
             <img src="./assets/images/gear-icon.svg" alt="" />
           </button>
         </main>

@@ -44,3 +44,55 @@ pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) -> Resul
 
     Ok(())
 }
+
+#[tauri::command]
+pub async fn open_qr_code_window(handler: AppHandle) {
+    let monitor = handler.primary_monitor().unwrap().unwrap();
+    let position = monitor.size();
+
+    let window_width = 210;
+    let window_height = 230;
+
+    let window_x_position = (position.width / 2) - (window_width / 2);
+    let window_y_position = (position.height / 2) - (window_height / 2);
+
+    tauri::WebviewWindowBuilder::new(
+        &handler,
+        "QR-Code",
+        tauri::WebviewUrl::App("qrcode.html".into()),
+    )
+    .transparent(true)
+    .decorations(false)
+    .always_on_top(true)
+    .inner_size(window_width.into(), window_height.into())
+    .position(window_x_position.into(), window_y_position.into())
+    .shadow(false)
+    .build()
+    .unwrap();
+}
+
+#[tauri::command]
+pub async fn open_config_window(handler: AppHandle) {
+    let monitor = handler.primary_monitor().unwrap().unwrap();
+    let position = monitor.size();
+
+    let window_width = 250;
+    let window_height = 180;
+
+    let window_x_position = (position.width / 2) - (window_width / 2);
+    let window_y_position = (position.height / 2) - (window_height / 2);
+
+    tauri::WebviewWindowBuilder::new(
+        &handler,
+        "Config",
+        tauri::WebviewUrl::App("config.html".into()),
+    )
+    .transparent(true)
+    .decorations(false)
+    .always_on_top(true)
+    .inner_size(window_width.into(), window_height.into())
+    .position(window_x_position.into(), window_y_position.into())
+    .shadow(false)
+    .build()
+    .unwrap();
+}
