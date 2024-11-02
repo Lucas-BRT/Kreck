@@ -11,6 +11,7 @@
     --kreck-dark-blue: #2557bb;
     --gray: #404451;
     --dark-gray: #222222;
+    --clear-gray: #909090;
 }
 
 @font-face {
@@ -30,29 +31,201 @@
     background-color: var(--dark-gray);
 }
 
-header {
-    font-size: 40px;
-    font-weight: 600;
+.main-window {
+    header {
+        font-size: 40px;
+        font-weight: 600;
 
-    &:hover {
-        text-shadow: 0 0 15px var(--kreck-blue);
+        &:hover {
+            text-shadow: 0 0 15px var(--kreck-blue);
+        }
+    }
+
+    #buttons-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 9px;
+
+        #save-button {
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+
+            height: 42px;
+            width: 75px;
+
+            background-color: var(--kreck-blue);
+        }
+
+        #buttons-wrapper {
+            width: 100%;
+            display: flex;
+            gap: 9px;
+            justify-content: space-evenly;
+        }
+
+        #connect-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 42px;
+            width: 150px;
+
+            border: none;
+            border-radius: 8px;
+            background-color: var(--kreck-blue);
+
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .icon-button {
+            display: flex;
+            align-items: center;
+            background-color: var(--kreck-dark-blue);
+            border: none;
+            border-radius: 8px;
+            padding: 4px;
+
+            img {
+                width: 22px;
+                height: 22px;
+            }
+        }
     }
 }
 
-main {
+button:hover {
+    box-shadow: 0 0px 10px var(--kreck-blue);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0 0px 10px var(--kreck-blue);
+    transition: 0.5s;
+}
+
+.config-window {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 12px;
 
-    gap: 9px;
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
 
-    #connect-button {
+        label {
+            color: var(--clear-gray);
+        }
+
+        #ip-wrapper {
+            display: flex;
+            flex-direction: column;
+
+            .entry-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--gray);
+                border-radius: 8px;
+                height: 35px;
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+
+                input {
+                    background-color: transparent;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 20px;
+                    width: 40px;
+
+                    text-align: center;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                }
+
+                input:focus {
+                    transition: 0.5s;
+                    border: none;
+                    outline: none;
+                    text-shadow: 0 0 8px var(--kreck-blue);
+                }
+
+                input::selection {
+                    background-color: transparent;
+                }
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+            }
+        }
+
+        #port-wrapper {
+            display: flex;
+            flex-direction: column;
+
+            .entry-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--gray);
+                border-radius: 8px;
+                height: 30px;
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+
+                input {
+                    background-color: transparent;
+                    border: none;
+                    font-size: 20px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                input:focus {
+                    transition: 0.5s;
+                    border: none;
+                    outline: none;
+                    text-shadow: 0 0 8px var(--kreck-blue);
+                }
+
+                input::selection {
+                    background-color: transparent;
+                }
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+            }
+        }
+    }
+
+    button {
         display: flex;
         align-items: center;
         justify-content: center;
 
         height: 42px;
-        width: 150px;
+        width: 85px;
 
         border: none;
         border-radius: 8px;
@@ -60,31 +233,5 @@ main {
 
         text-align: center;
         font-size: 14px;
-    }
-
-    .icon-button {
-        display: flex;
-        align-items: center;
-        background-color: var(--kreck-dark-blue);
-        border: none;
-        border-radius: 8px;
-        padding: 4px;
-
-        img {
-            width: 22px;
-            height: 22px;
-        }
-    }
-
-    button:hover {
-        box-shadow: 0 0px 10px var(--kreck-blue);
-        cursor: pointer;
-    }
-
-    button:focus {
-        border: none;
-        outline: none;
-        box-shadow: 0 0px 10px var(--kreck-blue);
-        transition: 0.5s;
     }
 }
