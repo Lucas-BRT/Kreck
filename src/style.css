@@ -2,6 +2,8 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: "KodeMono";
+    color: white;
 }
 
 :root {
@@ -20,78 +22,69 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    width: 100vw;
+    height: 100vh;
     border-radius: 8px;
     padding: 6px;
     gap: 8px;
-
-    font-family: "KodeMono";
-    color: white;
-
     background-color: var(--dark-gray);
+}
 
-    header {
-        font-size: 40px;
-        font-weight: 600;
+header {
+    font-size: 40px;
+    font-weight: 600;
 
-        span:hover {
-            text-shadow: 0 0 15px var(--kreck-blue);
-        }
-
-        span:focus {
-            border: none;
-            outline: none;
-            text-shadow: 0 0 15px var(--kreck-blue);
-            transition: 0.5s;
-        }
+    &:hover {
+        text-shadow: 0 0 15px var(--kreck-blue);
     }
+}
 
-    main {
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    #connect-button {
         display: flex;
-        gap: 9px;
         align-items: center;
         justify-content: center;
+
+        height: 42px;
+        width: 150px;
+
+        border: none;
+        border-radius: 8px;
+        background-color: var(--kreck-blue);
+
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .icon-button {
+        display: flex;
+        align-items: center;
+        background-color: var(--kreck-dark-blue);
+        border: none;
+        border-radius: 8px;
+        padding: 4px;
 
         img {
             width: 22px;
             height: 22px;
         }
+    }
 
-        #connect-button,
-        .selected-connect-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            background-color: var(--kreck-blue);
-            border: none;
-            height: 42px;
-            width: 150px;
-            text-align: center;
-            font-size: 14px;
-            font-family: "KodeMono";
-            color: white;
-        }
+    button:hover {
+        box-shadow: 0 0px 10px var(--kreck-blue);
+        cursor: pointer;
+    }
 
-        button {
-            display: flex;
-            align-items: center;
-            background-color: var(--kreck-dark-blue);
-            border: none;
-            border-radius: 8px;
-            padding: 4px;
-        }
-
-        button:hover {
-            box-shadow: 0 0px 10px var(--kreck-blue);
-            cursor: pointer;
-        }
-
-        button:focus {
-            border: none;
-            outline: none;
-            box-shadow: 0 0px 10px var(--kreck-blue);
-            transition: 0.5s;
-        }
+    button:focus {
+        border: none;
+        outline: none;
+        box-shadow: 0 0px 10px var(--kreck-blue);
+        transition: 0.5s;
     }
 }
