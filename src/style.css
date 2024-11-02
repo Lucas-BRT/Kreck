@@ -16,92 +16,82 @@
     src: url("./assets/fonts/KodeMono-VariableFont_wght.ttf");
 }
 
-#main-window {
+.window {
     display: flex;
-    width: 100%;
-    height: 100vh;
-    align-items: top;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 8px;
+    padding: 6px;
+    gap: 8px;
+
     font-family: "KodeMono";
     color: white;
 
-    #visible-window {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    background-color: var(--dark-gray);
 
-        width: 250px;
-        height: fit-content;
+    header {
+        font-size: 40px;
+        font-weight: 600;
 
-        border-radius: 8px;
-        padding: 6px;
-        gap: 8px;
-
-        background-color: var(--dark-gray);
-
-        header {
-            font-size: 40px;
-            font-weight: 600;
-
-            span:hover {
-                text-shadow: 0 0 15px var(--kreck-blue);
-            }
-
-            span:focus {
-                border: none;
-                outline: none;
-                text-shadow: 0 0 15px var(--kreck-blue);
-                transition: 0.5s;
-            }
+        span:hover {
+            text-shadow: 0 0 15px var(--kreck-blue);
         }
 
-        main {
+        span:focus {
+            border: none;
+            outline: none;
+            text-shadow: 0 0 15px var(--kreck-blue);
+            transition: 0.5s;
+        }
+    }
+
+    main {
+        display: flex;
+        gap: 9px;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 22px;
+            height: 22px;
+        }
+
+        #connect-button,
+        .selected-connect-button {
             display: flex;
-            gap: 9px;
             align-items: center;
             justify-content: center;
+            border-radius: 8px;
+            background-color: var(--kreck-blue);
+            border: none;
+            height: 42px;
+            width: 150px;
+            text-align: center;
+            font-size: 14px;
+            font-family: "KodeMono";
+            color: white;
+        }
 
-            img {
-                width: 22px;
-                height: 22px;
-            }
+        button {
+            display: flex;
+            align-items: center;
+            background-color: var(--kreck-dark-blue);
+            border: none;
+            border-radius: 8px;
+            padding: 4px;
+        }
 
-            #connect-button,
-            .selected-connect-button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 8px;
-                background-color: var(--kreck-blue);
-                border: none;
-                height: 42px;
-                width: 150px;
-                text-align: center;
-                font-size: 14px;
-                font-family: "KodeMono";
-                color: white;
-            }
+        button:hover {
+            box-shadow: 0 0px 10px var(--kreck-blue);
+            cursor: pointer;
+        }
 
-            button {
-                display: flex;
-                align-items: center;
-                background-color: var(--kreck-dark-blue);
-                border: none;
-                border-radius: 8px;
-                padding: 4px;
-            }
-
-            button:hover {
-                box-shadow: 0 0px 10px var(--kreck-blue);
-                cursor: pointer;
-            }
-
-            button:focus {
-                border: none;
-                outline: none;
-                box-shadow: 0 0px 10px var(--kreck-blue);
-                transition: 0.5s;
-            }
+        button:focus {
+            border: none;
+            outline: none;
+            box-shadow: 0 0px 10px var(--kreck-blue);
+            transition: 0.5s;
         }
     }
 }
