@@ -12,6 +12,7 @@
     --gray: #404451;
     --dark-gray: #222222;
     --clear-gray: #909090;
+    --red: rgb(187, 22, 22);
 }
 
 @font-face {
@@ -230,6 +231,45 @@ button:focus {
         border: none;
         border-radius: 8px;
         background-color: var(--kreck-blue);
+
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+.qrcode-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+
+    #canvas-container {
+        display: flex;
+        align-items: center;
+
+        background-color: white;
+        padding: 12px;
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+
+        canvas {
+            width: 100%;
+        }
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 42px;
+        width: 85px;
+
+        border: none;
+        border-radius: 8px;
+        background-color: var(--red);
 
         text-align: center;
         font-size: 14px;

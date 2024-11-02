@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Qr Code</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="./js/canvas.js" defer></script>
   </head>
   <body>
-    <div id="main-window">
-      <div id="visible-window">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-        sunt quasi? Ab, sapiente laudantium! Ea amet velit error corrupti
-        dolores sequi assumenda molestiae cupiditate sed doloribus, libero
-        facilis nihil iste!
+    <div class="window qrcode-window">
+      <div id="canvas-container">
+        <canvas id="qr-canvas"></canvas>
       </div>
+      <button>CLOSE</button>
     </div>
   </body>
 </html>

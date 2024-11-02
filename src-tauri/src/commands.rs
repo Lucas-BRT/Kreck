@@ -2,6 +2,7 @@ use crate::controller::setup_kenku_controller;
 use crate::server::setup_server;
 use crate::utils::get_local_ip;
 use crate::utils::RocketShutdownHandle;
+use qrcode::QrCode;
 use std::sync::Arc;
 use tauri::{
     async_runtime::{self, Mutex},
@@ -51,7 +52,7 @@ pub async fn open_qr_code_window(handler: AppHandle) {
     let position = monitor.size();
 
     let window_width = 210;
-    let window_height = 230;
+    let window_height = 250;
 
     let window_x_position = (position.width / 2) - (window_width / 2);
     let window_y_position = (position.height / 2) - (window_height / 2);
@@ -95,4 +96,27 @@ pub async fn open_config_window(handler: AppHandle) {
     .shadow(false)
     .build()
     .unwrap();
+}
+
+#[tauri::command]
+pub async fn get_qr_code_as_matrix(handler: AppHandle) -> Vec<Vec<bool>> {
+    let code = QrCode::new(b"http://qr-code-placeholder").unwrap();
+
+    let width = code.width();
+
+    // todo: "Update this decapred method."
+    let grid = code.into_vec().clone();
+
+    let size = grid.len() / width;
+
+    let mut matrix: Vec<Vec<bool>> = Vec::with_capacity(size);
+
+    for i in 0..size {
+        let begin = i * size;
+        let end = begin + size;
+
+        matrix.push(grid[begin..end].to_vec());
+    }
+
+    matrix
 }

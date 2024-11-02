@@ -1,22 +1,35 @@
 const tauri = window.__TAURI__;
 const invoke = tauri.core.invoke;
 
-export function shutdownServer() {
+function shutdownServer() {
     invoke("request_server_shutdown", {});
 }
 
-export function launchServer(ip, port) {
+function launchServer(ip, port) {
     invoke("launch_server", { ip, port });
 }
 
-export async function getLocalIp() {
+async function getLocalIp() {
     return await invoke("get_host_local_address").then((ip) => ip);
 }
 
-export async function openQrCodeWindow() {
+async function openQrCodeWindow() {
     await invoke("open_qr_code_window");
 }
 
-export async function openConfigWindow() {
+async function openConfigWindow() {
     await invoke("open_config_window");
 }
+
+async function getQrCodeAsMatrix() {
+    return await invoke("get_qr_code_as_matrix");
+}
+
+export {
+    shutdownServer,
+    launchServer,
+    getLocalIp,
+    openQrCodeWindow,
+    openConfigWindow,
+    getQrCodeAsMatrix,
+};

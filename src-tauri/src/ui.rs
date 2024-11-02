@@ -112,7 +112,8 @@ pub fn render_tauri_app() {
             request_server_shutdown,
             get_host_local_address,
             open_qr_code_window,
-            open_config_window
+            open_config_window,
+            get_qr_code_as_matrix
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
