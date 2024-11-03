@@ -42,12 +42,6 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn new(kenku_remote: KenkuRemoteAddress) -> Self {
-        Config {
-            kenku_remote_address: kenku_remote,
-        }
-    }
-
     pub fn set_kenku_remote_address(&mut self, kenku_remote: KenkuRemoteAddress) {
         self.kenku_remote_address = kenku_remote
     }
