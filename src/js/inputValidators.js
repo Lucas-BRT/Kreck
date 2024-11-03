@@ -28,17 +28,13 @@ export function handlePortInput() {
         let regex =
             /^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/;
 
-        // Remova caracteres não numéricos
         inputValue = inputValue.replace(/[^0-9]/g, "");
 
-        // Limite a entrada a no máximo 5 caracteres para evitar números muito longos
         if (inputValue.length > 5) {
             inputValue = inputValue.slice(0, 5);
         }
 
-        // Valide a entrada usando o regex
         if (!regex.test(inputValue)) {
-            // Se a entrada não for válida, corte o último caractere
             event.target.value = inputValue.slice(0, -1);
         } else {
             event.target.value = inputValue;
