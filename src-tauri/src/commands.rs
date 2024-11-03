@@ -103,7 +103,13 @@ pub async fn open_config_window(handler: AppHandle) {
 
 #[tauri::command]
 pub async fn get_qr_code_as_matrix(handler: AppHandle) -> Vec<Vec<bool>> {
-    let code = QrCode::new(b"http://qr-code-placeholder").unwrap();
+    let config_state = handler.state::<Mutex<Config>>();
+
+    let config = config_state.lock().await;
+    let address = config.get_kenku_remote_address();
+    let url = format!("http://{}:{}", address.get_ip(), address.get_port());
+
+    let code = QrCode::new(url).unwrap();
 
     let width = code.width();
 
