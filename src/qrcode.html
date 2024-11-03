@@ -8,11 +8,11 @@
     <script type="module" src="./js/canvas.js" defer></script>
   </head>
   <body>
-    <div class="window qrcode-window">
+    <div class="window qrcode-window" data-tauri-drag-region>
       <div id="canvas-container">
         <canvas id="qr-canvas"></canvas>
       </div>
-      <button>CLOSE</button>
+      <button id="close-button">CLOSE</button>
     </div>
   </body>
 </html>

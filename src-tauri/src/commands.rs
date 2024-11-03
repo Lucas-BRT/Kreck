@@ -9,6 +9,7 @@ use std::fs::OpenOptions;
 use std::io::Write;
 use std::net::Ipv4Addr;
 use std::sync::Arc;
+use tauri::Window;
 use tauri::{
     async_runtime::{self, Mutex},
     AppHandle, Manager,
@@ -70,6 +71,8 @@ pub async fn open_qr_code_window(handler: AppHandle) {
     .transparent(true)
     .decorations(false)
     .always_on_top(true)
+    .resizable(false)
+    .maximizable(false)
     .inner_size(window_width.into(), window_height.into())
     .position(window_x_position.into(), window_y_position.into())
     .shadow(false)
@@ -96,6 +99,8 @@ pub async fn open_config_window(handler: AppHandle) {
     .transparent(true)
     .decorations(false)
     .always_on_top(true)
+    .resizable(false)
+    .maximizable(false)
     .inner_size(window_width.into(), window_height.into())
     .position(window_x_position.into(), window_y_position.into())
     .shadow(false)
@@ -156,11 +161,14 @@ pub async fn set_config(handler: AppHandle, address: Ipv4Addr, port: u16) {
 
     data_path.push("config.json");
 
-    println!("{:#?}", data_path);
-
     let mut config_file = OpenOptions::new().write(true).open(&data_path).unwrap();
 
     let json_config = serde_json::to_string_pretty(&*state_config).unwrap();
 
     config_file.write_all(json_config.as_bytes()).unwrap();
+}
+
+#[tauri::command]
+pub async fn close_window(window: Window) {
+    let _ = window.destroy();
 }

@@ -33,6 +33,10 @@ async function setConfig(address, port) {
     await invoke("set_config", { address, port });
 }
 
+async function closeWindow() {
+    await invoke("close_window");
+}
+
 export {
     shutdownServer,
     launchServer,
@@ -42,4 +46,5 @@ export {
     getQrCodeAsMatrix,
     getConfig,
     setConfig,
+    closeWindow,
 };

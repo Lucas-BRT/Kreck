@@ -1,4 +1,10 @@
-import { getQrCodeAsMatrix } from "./tauriCommands.js";
+import { closeWindow, getQrCodeAsMatrix } from "./tauriCommands.js";
+
+const closeButton = document.querySelector("#close-button");
+
+closeButton.addEventListener("click", async () => {
+    await closeWindow();
+});
 
 getQrCodeAsMatrix().then((response) => {
     console.log(response);

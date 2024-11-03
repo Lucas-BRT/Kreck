@@ -15,6 +15,7 @@
         "skipTaskbar": true,
         "resizable": false,
         "minimizable": false,
+        "maximizable": false,
         "alwaysOnTop": true,
         "visible": false,
         "focus": false,

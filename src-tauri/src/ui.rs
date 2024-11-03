@@ -148,7 +148,8 @@ pub fn render_tauri_app() {
             open_config_window,
             get_qr_code_as_matrix,
             get_config,
-            set_config
+            set_config,
+            close_window
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -1,4 +1,4 @@
-import { getConfig, setConfig } from "./tauriCommands.js";
+import { closeWindow, getConfig, setConfig } from "./tauriCommands.js";
 
 export function handleIpInput(address) {
     let ipInputs = document.querySelectorAll(".ip-entry");
@@ -78,6 +78,8 @@ function handleSaveButton() {
         // save the current address
 
         await setConfig(address, port);
+
+        await closeWindow();
     });
 }
 
