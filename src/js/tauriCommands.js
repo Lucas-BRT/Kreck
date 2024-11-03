@@ -25,6 +25,14 @@ async function getQrCodeAsMatrix() {
     return await invoke("get_qr_code_as_matrix");
 }
 
+async function getConfig() {
+    return await invoke("get_config");
+}
+
+async function setConfig(address, port) {
+    await invoke("set_config", { address, port });
+}
+
 export {
     shutdownServer,
     launchServer,
@@ -32,4 +40,6 @@ export {
     openQrCodeWindow,
     openConfigWindow,
     getQrCodeAsMatrix,
+    getConfig,
+    setConfig,
 };
