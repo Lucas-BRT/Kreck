@@ -1,8 +1,11 @@
+use crate::config::Config;
+use crate::config::KenkuRemoteAddress;
 use crate::controller::setup_kenku_controller;
 use crate::server::setup_server;
 use crate::utils::get_local_ip;
 use crate::utils::RocketShutdownHandle;
 use qrcode::QrCode;
+use std::net::Ipv4Addr;
 use std::sync::Arc;
 use tauri::{
     async_runtime::{self, Mutex},
@@ -119,4 +122,22 @@ pub async fn get_qr_code_as_matrix(handler: AppHandle) -> Vec<Vec<bool>> {
     }
 
     matrix
+}
+
+#[tauri::command]
+pub async fn get_config(handler: AppHandle) -> Config {
+    let config = handler.state::<Mutex<Config>>();
+
+    let config = config.lock().await;
+
+    *config
+}
+
+#[tauri::command]
+pub async fn set_config(handler: AppHandle, address: Ipv4Addr, port: u16) {
+    let state = handler.state::<Mutex<Config>>();
+
+    let mut state_config = state.lock().await;
+
+    state_config.set_kenku_remote_address(KenkuRemoteAddress::new(address, port))
 }
