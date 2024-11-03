@@ -9,6 +9,8 @@ use std::fs::OpenOptions;
 use std::io::Write;
 use std::net::Ipv4Addr;
 use std::sync::Arc;
+use tauri::Emitter;
+use tauri::Listener;
 use tauri::Window;
 use tauri::{
     async_runtime::{self, Mutex},
@@ -109,6 +111,46 @@ pub async fn open_config_window(handler: AppHandle) {
 }
 
 #[tauri::command]
+pub async fn open_error_window(handler: AppHandle) {
+    let monitor = handler.primary_monitor().unwrap().unwrap();
+    let monitor_size = monitor.size();
+
+    let window_width = 210;
+    let window_height = 120;
+
+    let window_x_position = (monitor_size.width / 2) - (window_width / 2);
+    let window_y_position = (monitor_size.height / 2) - (window_height / 2);
+
+    // bug: on Fedora linux Gnome, if the method .resizable(true) is called the window not respect the width and height
+    // need to open a issue in tauri
+    tauri::WebviewWindowBuilder::new(
+        &handler,
+        "Error",
+        tauri::WebviewUrl::App("error.html".into()),
+    )
+    .transparent(true)
+    .decorations(false)
+    .always_on_top(true)
+    .maximizable(false)
+    .inner_size(window_width.into(), window_height.into())
+    .position(window_x_position.into(), window_y_position.into())
+    .shadow(false)
+    .build()
+    .unwrap();
+}
+
+#[tauri::command]
+pub async fn emit_error(handler: AppHandle, message: String) {
+    let inner_handler = handler.clone();
+
+    handler.listen("error-window-ready", move |_| {
+        inner_handler
+            .emit("error", &message)
+            .expect("failed to emit error event");
+    });
+}
+
+#[tauri::command]
 pub async fn get_qr_code_as_matrix(handler: AppHandle) -> Vec<Vec<bool>> {
     let ip = get_local_ip().unwrap();
     let code = QrCode::new(format!("http://{ip}:8000")).unwrap();
@@ -166,4 +208,11 @@ pub async fn set_config(handler: AppHandle, address: Ipv4Addr, port: u16) {
 #[tauri::command]
 pub async fn close_window(window: Window) {
     let _ = window.destroy();
+}
+
+#[tauri::command]
+pub fn open_issues_page() {
+    let url = "https://github.com/Lucas-BRT/Kreck/issues";
+
+    open::that(url);
 }

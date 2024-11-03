@@ -13,6 +13,7 @@
     --dark-gray: #222222;
     --clear-gray: #909090;
     --red: rgb(187, 22, 22);
+    --warning: #da8b1d;
 }
 
 @font-face {
@@ -273,5 +274,46 @@ button:focus {
 
         text-align: center;
         font-size: 14px;
+    }
+}
+
+.error-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 12px;
+
+    header {
+        color: var(--warning);
+    }
+
+    #buttons-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+
+        button {
+            width: 100%;
+            padding: 6px;
+            width: 85px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--kreck-blue);
+        }
+
+        #report-button {
+            background-color: var(--warning);
+        }
+
+        #report-button:hover {
+            box-shadow: 0 0px 10px var(--warning);
+            cursor: pointer;
+            transition: 0.5s;
+        }
     }
 }

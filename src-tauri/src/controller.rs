@@ -12,6 +12,6 @@ pub async fn setup_kenku_controller(ip: String, port: u16) -> Result<Controller,
 
     match kenku_control::utils::check_kenku_server_state(address).await {
         kenku_control::KenkuState::Online => Ok(Controller::new(ip, port)),
-        kenku_control::KenkuState::Offline => Err("Server Offline".to_string()),
+        kenku_control::KenkuState::Offline => Err("Kenku Remote Offline".to_string()),
     }
 }

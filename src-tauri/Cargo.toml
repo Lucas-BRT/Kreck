@@ -25,3 +25,4 @@ tokio = { version = "1.17", features = ["full"] }
 kenku_control = "0.2.3"
 local-ip-address = "0.6.1"
 qrcode = { version = "0.14.1" }
+open = "5.3.0"

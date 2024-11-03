@@ -6,7 +6,7 @@ function shutdownServer() {
 }
 
 async function launchServer(ip, port) {
-    invoke("launch_server", { ip, port });
+    return invoke("launch_server", { ip, port });
 }
 
 async function getLocalIp() {
@@ -19,6 +19,10 @@ async function openQrCodeWindow() {
 
 async function openConfigWindow() {
     await invoke("open_config_window");
+}
+
+async function openErrorWindow() {
+    await invoke("open_error_window");
 }
 
 async function getQrCodeAsMatrix() {
@@ -37,14 +41,25 @@ async function closeWindow() {
     await invoke("close_window");
 }
 
+async function emitError(message) {
+    await invoke("emit_error", { message });
+}
+
+function openIssuesPage() {
+    invoke("open_issues_page");
+}
+
 export {
     shutdownServer,
     launchServer,
     getLocalIp,
     openQrCodeWindow,
     openConfigWindow,
+    openErrorWindow,
     getQrCodeAsMatrix,
     getConfig,
     setConfig,
     closeWindow,
+    emitError,
+    openIssuesPage,
 };

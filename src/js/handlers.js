@@ -4,6 +4,8 @@ import {
     openQrCodeWindow,
     openConfigWindow,
     getConfig,
+    openErrorWindow,
+    emitError,
 } from "./tauriCommands.js";
 
 function updateButton(button, style, innerText) {
@@ -31,7 +33,10 @@ export function handleConnectButton() {
                     buttonState = "selected";
                     await openQrCodeWindow();
                 })
-                .catch((reason) => {});
+                .catch(async (reason) => {
+                    await openErrorWindow();
+                    await emitError(reason);
+                });
         } else {
             updateButton(connectButton, "unselected-connect-button", "CONNECT");
             buttonState = "unselected";
