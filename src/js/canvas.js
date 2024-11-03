@@ -7,7 +7,6 @@ closeButton.addEventListener("click", async () => {
 });
 
 getQrCodeAsMatrix().then((response) => {
-    console.log(response);
     const cellSize = 6;
 
     const matrixSize = response.length;

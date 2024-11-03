@@ -73,8 +73,6 @@ function handleSaveButton() {
         const port =
             portElement.value == "" ? 3333 : parseInt(portElement.value);
 
-        console.log(address, port);
-
         // save the current address
 
         await setConfig(address, port);
@@ -83,8 +81,8 @@ function handleSaveButton() {
     });
 }
 
-let a = await getConfig();
-let { address, port } = a.kenku_remote_address;
+let config = await getConfig();
+let { address, port } = config.kenku_remote_address;
 
 handleIpInput(address);
 handlePortInput(port);
