@@ -15,7 +15,7 @@ export function handleConnectButton() {
     let buttonState = "unselected";
     const connectButton = document.querySelector("#connect-button");
 
-    connectButton.addEventListener("click", () => {
+    connectButton.addEventListener("click", async () => {
         if (buttonState == "unselected") {
             updateButton(
                 connectButton,
@@ -24,7 +24,7 @@ export function handleConnectButton() {
             );
             const {
                 kenku_remote_address: { address, port },
-            } = getConfig();
+            } = await getConfig();
 
             buttonState = "selected";
             launchServer(address, port);
