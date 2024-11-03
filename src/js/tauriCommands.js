@@ -5,7 +5,7 @@ function shutdownServer() {
     invoke("request_server_shutdown", {});
 }
 
-function launchServer(ip, port) {
+async function launchServer(ip, port) {
     invoke("launch_server", { ip, port });
 }
 

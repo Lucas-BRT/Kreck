@@ -17,17 +17,21 @@ export function handleConnectButton() {
 
     connectButton.addEventListener("click", async () => {
         if (buttonState == "unselected") {
-            updateButton(
-                connectButton,
-                "selected-connect-button",
-                "DISCONNECT",
-            );
             const {
                 kenku_remote_address: { address, port },
             } = await getConfig();
 
-            buttonState = "selected";
-            launchServer(address, port);
+            launchServer(address, port)
+                .then(async () => {
+                    updateButton(
+                        connectButton,
+                        "selected-connect-button",
+                        "DISCONNECT",
+                    );
+                    buttonState = "selected";
+                    await openQrCodeWindow();
+                })
+                .catch((reason) => {});
         } else {
             updateButton(connectButton, "unselected-connect-button", "CONNECT");
             buttonState = "unselected";
