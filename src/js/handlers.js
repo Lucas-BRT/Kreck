@@ -3,6 +3,7 @@ import {
     launchServer,
     openQrCodeWindow,
     openConfigWindow,
+    getConfig,
 } from "./tauriCommands.js";
 
 function updateButton(button, style, innerText) {
@@ -19,18 +20,18 @@ export function handleConnectButton() {
             updateButton(
                 connectButton,
                 "selected-connect-button",
-                "DISCONNECT"
+                "DISCONNECT",
             );
+            const {
+                kenku_remote_address: { address, port },
+            } = getConfig();
+
             buttonState = "selected";
-            const ip = getIp();
-            const port = getPort();
-            launchServer(ip, port);
-            handleLocalIp();
+            launchServer(address, port);
         } else {
             updateButton(connectButton, "unselected-connect-button", "CONNECT");
             buttonState = "unselected";
             shutdownServer();
-            handleLocalIp();
         }
     });
 }
