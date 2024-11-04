@@ -26,14 +26,6 @@ impl KenkuRemoteAddress {
     pub fn new(address: Ipv4Addr, port: u16) -> Self {
         KenkuRemoteAddress { address, port }
     }
-
-    pub fn get_ip(&self) -> Ipv4Addr {
-        self.address
-    }
-
-    pub fn get_port(&self) -> u16 {
-        self.port
-    }
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone, Copy)]
@@ -44,10 +36,6 @@ pub struct Config {
 impl Config {
     pub fn set_kenku_remote_address(&mut self, kenku_remote: KenkuRemoteAddress) {
         self.kenku_remote_address = kenku_remote
-    }
-
-    pub fn get_kenku_remote_address(&self) -> KenkuRemoteAddress {
-        self.kenku_remote_address
     }
 }
 
