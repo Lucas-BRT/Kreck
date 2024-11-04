@@ -36,7 +36,8 @@
     "icon": [
       "icons/48x48.png",
       "icons/72x72.png",
-      "icons/128x128.png"
+      "icons/128x128.png",
+      "icons/icon.ico"
     ]
   },
   "plugins": {}
