@@ -4,7 +4,7 @@ use crate::controller::setup_kenku_controller;
 use crate::server::setup_server;
 use crate::utils::get_local_ip;
 use crate::utils::RocketShutdownHandle;
-use crate::window_management::create_window;
+use crate::window::window_management::create_window;
 use qrcode::QrCode;
 use std::fs::OpenOptions;
 use std::io::Write;
