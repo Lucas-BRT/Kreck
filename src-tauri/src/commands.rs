@@ -104,7 +104,7 @@ pub async fn open_error_window(handler: AppHandle) {
 }
 
 #[tauri::command]
-pub async fn get_qr_code_as_matrix(handler: AppHandle) -> Vec<Vec<bool>> {
+pub async fn get_qr_code_as_matrix() -> Vec<Vec<bool>> {
     let ip = get_local_ip().unwrap();
     let code = QrCode::new(format!("http://{ip}:8000")).unwrap();
 
