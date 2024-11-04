@@ -7,6 +7,7 @@ mod controller;
 mod server;
 mod ui;
 mod utils;
+mod window_management;
 
 fn main() {
     ui::render_tauri_app();

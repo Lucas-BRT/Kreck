@@ -4,6 +4,7 @@ use crate::controller::setup_kenku_controller;
 use crate::server::setup_server;
 use crate::utils::get_local_ip;
 use crate::utils::RocketShutdownHandle;
+use crate::window_management::create_window;
 use qrcode::QrCode;
 use std::fs::OpenOptions;
 use std::io::Write;
@@ -11,6 +12,7 @@ use std::net::Ipv4Addr;
 use std::sync::Arc;
 use tauri::Emitter;
 use tauri::Listener;
+use tauri::WebviewUrl;
 use tauri::Window;
 use tauri::{
     async_runtime::{self, Mutex},
@@ -56,87 +58,51 @@ pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) -> Resul
 
 #[tauri::command]
 pub async fn open_qr_code_window(handler: AppHandle) {
-    let monitor = handler.primary_monitor().unwrap().unwrap();
-    let position = monitor.size();
-
     let window_width = 210;
     let window_height = 250;
 
-    let window_x_position = (position.width / 2) - (window_width / 2);
-    let window_y_position = (position.height / 2) - (window_height / 2);
-
-    tauri::WebviewWindowBuilder::new(
+    create_window(
         &handler,
         "QR-Code",
-        tauri::WebviewUrl::App("qrcode.html".into()),
+        WebviewUrl::App("qrcode.html".into()),
+        window_width,
+        window_height,
     )
-    .transparent(true)
-    .decorations(false)
-    .always_on_top(true)
-    .resizable(false)
-    .maximizable(false)
-    .inner_size(window_width.into(), window_height.into())
-    .position(window_x_position.into(), window_y_position.into())
-    .shadow(false)
-    .build()
-    .unwrap();
+    .expect("Failed to create QR-Code Window.");
 }
 
 #[tauri::command]
 pub async fn open_config_window(handler: AppHandle) {
-    let monitor = handler.primary_monitor().unwrap().unwrap();
-    let position = monitor.size();
-
     let window_width = 250;
     let window_height = 180;
 
-    let window_x_position = (position.width / 2) - (window_width / 2);
-    let window_y_position = (position.height / 2) - (window_height / 2);
-
-    tauri::WebviewWindowBuilder::new(
+    create_window(
         &handler,
         "Config",
-        tauri::WebviewUrl::App("config.html".into()),
+        WebviewUrl::App("config.html".into()),
+        window_width,
+        window_height,
     )
-    .transparent(true)
-    .decorations(false)
-    .always_on_top(true)
-    .resizable(false)
-    .maximizable(false)
-    .inner_size(window_width.into(), window_height.into())
-    .position(window_x_position.into(), window_y_position.into())
-    .shadow(false)
-    .build()
-    .unwrap();
+    .expect("Failed to create Config Window.");
 }
 
 #[tauri::command]
 pub async fn open_error_window(handler: AppHandle) {
-    let monitor = handler.primary_monitor().unwrap().unwrap();
-    let monitor_size = monitor.size();
-
     let window_width = 210;
     let window_height = 120;
 
-    let window_x_position = (monitor_size.width / 2) - (window_width / 2);
-    let window_y_position = (monitor_size.height / 2) - (window_height / 2);
-
     // bug: on Fedora linux Gnome, if the method .resizable(true) is called the window not respect the width and height
     // need to open a issue in tauri
-    tauri::WebviewWindowBuilder::new(
+    create_window(
         &handler,
         "Error",
-        tauri::WebviewUrl::App("error.html".into()),
+        WebviewUrl::App("error.html".into()),
+        window_width,
+        window_height,
     )
-    .transparent(true)
-    .decorations(false)
-    .always_on_top(true)
-    .maximizable(false)
-    .inner_size(window_width.into(), window_height.into())
-    .position(window_x_position.into(), window_y_position.into())
-    .shadow(false)
-    .build()
-    .unwrap();
+    .expect("Failed to create Config Window.")
+    .set_resizable(false)
+    .expect("failed to set the config window to be resizable.");
 }
 
 #[tauri::command]
