@@ -25,8 +25,8 @@ pub fn get_host_local_address() -> Result<String, String> {
 }
 
 #[tauri::command]
-pub async fn request_server_shutdown(app_state: AppHandle) {
-    let state = app_state.state::<Arc<Mutex<RocketShutdownHandle>>>();
+pub async fn request_server_shutdown(handler: AppHandle) {
+    let state = handler.state::<Arc<Mutex<RocketShutdownHandle>>>();
     let handle = state.try_lock().unwrap();
 
     if let Some(handler) = &handle.0 {
@@ -35,8 +35,8 @@ pub async fn request_server_shutdown(app_state: AppHandle) {
 }
 
 #[tauri::command]
-pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) -> Result<(), String> {
-    let rocket_state = app_state.state::<Arc<Mutex<RocketShutdownHandle>>>();
+pub async fn launch_server(handler: AppHandle, ip: String, port: u16) -> Result<(), String> {
+    let rocket_state = handler.state::<Arc<Mutex<RocketShutdownHandle>>>();
 
     let controller = setup_kenku_controller(ip, port).await?;
 
