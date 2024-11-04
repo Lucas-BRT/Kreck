@@ -5,6 +5,7 @@ use crate::server::setup_server;
 use crate::utils::get_local_ip;
 use crate::utils::RocketShutdownHandle;
 use crate::window::window_management::create_window;
+use qrcode::Color;
 use qrcode::QrCode;
 use std::fs::OpenOptions;
 use std::io::Write;
@@ -110,10 +111,17 @@ pub async fn get_qr_code_as_matrix() -> Vec<Vec<bool>> {
 
     let width = code.width();
 
-    // todo: "Update this decapred method."
-    let grid = code.into_vec().clone();
+    let array: Vec<bool> = code
+        .to_colors()
+        .to_vec()
+        .iter()
+        .map(|element| match *element {
+            Color::Light => false,
+            Color::Dark => true,
+        })
+        .collect();
 
-    let size = grid.len() / width;
+    let size = array.len() / width;
 
     let mut matrix: Vec<Vec<bool>> = Vec::with_capacity(size);
 
@@ -121,7 +129,7 @@ pub async fn get_qr_code_as_matrix() -> Vec<Vec<bool>> {
         let begin = i * size;
         let end = begin + size;
 
-        matrix.push(grid[begin..end].to_vec());
+        matrix.push(array[begin..end].to_vec());
     }
 
     matrix
@@ -160,12 +168,12 @@ pub async fn set_config(handler: AppHandle, address: Ipv4Addr, port: u16) {
 
 #[tauri::command]
 pub async fn close_window(window: Window) {
-    let _ = window.destroy();
+    window.destroy().expect("failed to destroy the window");
 }
 
 #[tauri::command]
 pub fn open_issues_page() {
     let url = "https://github.com/Lucas-BRT/Kreck/issues";
 
-    open::that(url);
+    open::that(url).expect("failed to open browser.");
 }
