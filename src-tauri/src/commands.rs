@@ -10,8 +10,6 @@ use std::fs::OpenOptions;
 use std::io::Write;
 use std::net::Ipv4Addr;
 use std::sync::Arc;
-use tauri::Emitter;
-use tauri::Listener;
 use tauri::WebviewUrl;
 use tauri::Window;
 use tauri::{
@@ -103,17 +101,6 @@ pub async fn open_error_window(handler: AppHandle) {
     .expect("Failed to create Config Window.")
     .set_resizable(false)
     .expect("failed to set the config window to be resizable.");
-}
-
-#[tauri::command]
-pub async fn emit_error(handler: AppHandle, message: String) {
-    let inner_handler = handler.clone();
-
-    handler.listen("error-window-ready", move |_| {
-        inner_handler
-            .emit("error", &message)
-            .expect("failed to emit error event");
-    });
 }
 
 #[tauri::command]

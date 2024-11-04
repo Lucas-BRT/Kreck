@@ -1,6 +1,6 @@
 use crate::utils::RocketShutdownHandle;
+use crate::window::events::*;
 use crate::{commands::*, config::Config};
-
 use std::fs::File;
 use std::io::{BufReader, Write};
 use std::{fs::create_dir, sync::Arc};
