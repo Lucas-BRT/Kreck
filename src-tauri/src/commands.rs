@@ -62,12 +62,12 @@ pub async fn open_qr_code_window(handler: AppHandle) {
 
     create_window(
         &handler,
-        "QR-Code",
-        WebviewUrl::App("qrcode.html".into()),
+        "qr-code",
+        WebviewUrl::App("pages/qrcode.html".into()),
         window_width,
         window_height,
     )
-    .expect("Failed to create QR-Code Window.");
+    .expect("Failed to create qr-code Window.");
 }
 
 #[tauri::command]
@@ -77,12 +77,12 @@ pub async fn open_config_window(handler: AppHandle) {
 
     create_window(
         &handler,
-        "Config",
-        WebviewUrl::App("config.html".into()),
+        "config",
+        WebviewUrl::App("pages/config.html".into()),
         window_width,
         window_height,
     )
-    .expect("Failed to create Config Window.");
+    .expect("Failed to create config Window.");
 }
 
 #[tauri::command]
@@ -94,14 +94,14 @@ pub async fn open_error_window(handler: AppHandle) {
     // need to open a issue in tauri
     create_window(
         &handler,
-        "Error",
-        WebviewUrl::App("error.html".into()),
+        "error",
+        WebviewUrl::App("/pages/error.html".into()),
         window_width,
         window_height,
     )
-    .expect("Failed to create Config Window.")
+    .expect("Failed to create error Window.")
     .set_resizable(false)
-    .expect("failed to set the config window to be resizable.");
+    .expect("failed to set the error window to be resizable.");
 }
 
 #[tauri::command]

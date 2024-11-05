@@ -2,7 +2,7 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Capability for the main window",
-  "windows": ["main", "Config", "QR-Code", "Error"],
+  "windows": ["main", "config", "qr-code", "error"],
   "permissions": [
     "core:path:default",
     "core:event:default",
