@@ -1,4 +1,5 @@
 pub mod setup;
+pub mod tray;
 pub mod window;
 
 use crate::commands::{resources::*, server::*, window::*};
