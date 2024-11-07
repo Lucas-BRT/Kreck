@@ -32,12 +32,15 @@ pub fn setup(app: &mut App) -> Result<(), Box<dyn Error>> {
     let tray_icon = Image::from_bytes(PNG_TRAY_ICON)
         .expect("failed to create icon from image ../icons/128x128.png");
 
-    let menu_tray = MenuBuilder::new(app).item(&exit_kreck);
+    let menu_tray = MenuBuilder::new(app);
 
     #[cfg(target_os = "linux")]
     let menu_tray = menu_tray.item(&launch_kreck);
 
-    let menu_tray = menu_tray.build().expect("failed to create menu tray");
+    let menu_tray = menu_tray
+        .item(&exit_kreck)
+        .build()
+        .expect("failed to create menu tray");
 
     TrayIconBuilder::new()
         .icon(tray_icon)
