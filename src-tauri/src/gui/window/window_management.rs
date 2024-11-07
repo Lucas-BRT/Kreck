@@ -29,3 +29,7 @@ pub fn create_window(
         .shadow(false)
         .build()
 }
+
+pub fn hide_window(window: WebviewWindow) {
+    window.hide().expect("failed to hide window");
+}

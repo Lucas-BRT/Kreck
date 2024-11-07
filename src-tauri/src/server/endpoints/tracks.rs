@@ -1,6 +1,5 @@
-use kenku_control::{playlist::playback::*, Controller};
-use rocket::{get, put, State};
-use serde_json::{json, Value};
+use kenku_control::Controller;
+use rocket::{put, State};
 
 #[put("/tracks/play/<track_id>")]
 pub async fn play(controller: &State<Controller>, track_id: String) {

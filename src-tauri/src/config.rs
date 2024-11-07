@@ -1,6 +1,8 @@
 use serde::{Deserialize, Serialize};
 use std::{fmt::Display, net::Ipv4Addr};
 
+pub(crate) const CONFIG_FILE_NAME: &str = "config.json";
+
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub struct KenkuRemoteAddress {
     address: Ipv4Addr,

@@ -1,5 +1,5 @@
-use kenku_control::{playlist::playback::*, Controller};
-use rocket::{get, put, State};
+use kenku_control::Controller;
+use rocket::{get, State};
 use serde_json::{json, Value};
 
 #[get("/soundboard")]

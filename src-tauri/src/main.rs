@@ -4,11 +4,11 @@
 mod commands;
 mod config;
 mod controller;
+mod error;
+mod gui;
+mod network;
 mod server;
-mod ui;
-mod utils;
-mod window;
 
 fn main() {
-    ui::render_tauri_app();
+    gui::run();
 }
