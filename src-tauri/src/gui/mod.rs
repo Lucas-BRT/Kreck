@@ -23,7 +23,8 @@ pub fn run() {
             close_window,
             open_error_window,
             emit_error,
-            open_issues_page
+            open_issues_page,
+            hide_window
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

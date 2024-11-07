@@ -6,6 +6,8 @@ import {
     getConfig,
     openErrorWindow,
     emitError,
+    closeWindow,
+    hideWindow,
 } from "./tauriCommands.js";
 
 function updateButton(button, style, innerText) {
@@ -31,6 +33,7 @@ export function handleConnectButton() {
                         "DISCONNECT",
                     );
                     buttonState = "selected";
+                    await hideWindow();
                     await openQrCodeWindow();
                 })
                 .catch(async (reason) => {

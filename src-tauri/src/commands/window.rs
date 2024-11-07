@@ -60,6 +60,11 @@ pub fn close_window(window: Window) {
 }
 
 #[tauri::command]
+pub fn hide_window(window: Window) {
+    window.hide().expect("failed to hide the window");
+}
+
+#[tauri::command]
 pub fn open_issues_page() {
     let url = "https://github.com/Lucas-BRT/Kreck/issues";
 

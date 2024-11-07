@@ -41,6 +41,10 @@ async function closeWindow() {
     await invoke("close_window");
 }
 
+async function hideWindow() {
+    await invoke("hide_window");
+}
+
 async function emitError(message) {
     await invoke("emit_error", { message });
 }
@@ -62,4 +66,5 @@ export {
     closeWindow,
     emitError,
     openIssuesPage,
+    hideWindow,
 };
