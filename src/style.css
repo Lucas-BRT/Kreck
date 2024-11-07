@@ -270,7 +270,7 @@ button:focus {
 
         border: none;
         border-radius: 8px;
-        background-color: var(--red);
+        background-color: var(--kreck-blue);
 
         text-align: center;
         font-size: 14px;
