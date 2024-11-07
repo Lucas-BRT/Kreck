@@ -1,7 +1,10 @@
 mod endpoints;
 
 use kenku_control::Controller;
-use rocket::{fs::FileServer, routes, Ignite, Rocket};
+use rocket::{fs::FileServer, routes, Ignite, Rocket, Shutdown};
+
+#[derive(Default)]
+pub struct RocketShutdownHandle(pub Option<Shutdown>);
 
 pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rocket::Error> {
     let rocket_config = rocket::Config::figment()
@@ -15,7 +18,7 @@ pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rock
         .mount(
             "/",
             routes![
-                endpoints::tracks::get,
+                endpoints::playlist::get,
                 endpoints::tracks::play,
                 endpoints::sounds::get,
                 endpoints::sounds::play,
