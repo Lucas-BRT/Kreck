@@ -5,7 +5,6 @@ use std::error::Error;
 use std::fs::File;
 use std::io::{BufReader, Write};
 use std::{fs::create_dir, sync::Arc};
-#[cfg(not(target_os = "linux"))]
 use tauri::App;
 use tauri::{async_runtime::Mutex, Manager};
 
