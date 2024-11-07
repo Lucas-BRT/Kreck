@@ -15,3 +15,7 @@ impl NetworkAddress {
         }
     }
 }
+
+pub fn get_local_ip() -> IpAddr {
+    local_ip_address::local_ip().expect("failed to get local ip")
+}

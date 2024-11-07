@@ -2,7 +2,9 @@ use crate::config::Config;
 use crate::config::KenkuRemoteAddress;
 use crate::config::CONFIG_FILE_NAME;
 use crate::error::Error;
+use crate::network::get_local_ip;
 use crate::network::NetworkAddress;
+use crate::server::DEFAULT_SERVER_LAUNCHING_PORT;
 use qrcode::Color;
 use qrcode::QrCode;
 use std::fs::OpenOptions;
@@ -28,8 +30,8 @@ pub fn get_all_ip_addresses() -> Result<Vec<NetworkAddress>, Error> {
 
 #[tauri::command]
 pub async fn get_qr_code_as_matrix() -> Vec<Vec<bool>> {
-    let ip = "192.168.0.1";
-    let code = QrCode::new(format!("http://{ip}:8000")).unwrap();
+    let ip = get_local_ip();
+    let code = QrCode::new(format!("http://{ip}:{DEFAULT_SERVER_LAUNCHING_PORT}")).unwrap();
 
     let width = code.width();
 

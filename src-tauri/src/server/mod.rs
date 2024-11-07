@@ -6,10 +6,12 @@ use rocket::{fs::FileServer, routes, Ignite, Rocket, Shutdown};
 #[derive(Default)]
 pub struct RocketShutdownHandle(pub Option<Shutdown>);
 
+pub const DEFAULT_SERVER_LAUNCHING_PORT: u32 = 8000;
+
 pub async fn setup_server(controller: Controller) -> Result<Rocket<Ignite>, rocket::Error> {
     let rocket_config = rocket::Config::figment()
         .merge(("address", "0.0.0.0"))
-        .merge(("port", 8000))
+        .merge(("port", DEFAULT_SERVER_LAUNCHING_PORT))
         .merge(("workers", 4));
 
     rocket::custom(rocket_config)
