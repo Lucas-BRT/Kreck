@@ -6,7 +6,6 @@ use std::fs::File;
 use std::io::{BufReader, Write};
 use std::{fs::create_dir, sync::Arc};
 #[cfg(not(target_os = "linux"))]
-use tauri::tray::MouseButton;
 use tauri::App;
 use tauri::{async_runtime::Mutex, Manager};
 

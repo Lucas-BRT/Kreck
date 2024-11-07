@@ -1,5 +1,3 @@
-#[cfg(not(target_os = "linux"))]
-use tauri::tray::MouseButton;
 use tauri::tray::TrayIcon;
 use tauri::AppHandle;
 use tauri::{
@@ -31,7 +29,7 @@ pub fn setup_tray(handler: &AppHandle) -> Result<TrayIcon, tauri::Error> {
         .build()
         .expect("failed to create menu tray");
 
-    // build tray and add support to launch|stop buttons if in a linux enviroment
+    // add support to open the tray
     let tray = TrayIconBuilder::new().icon(tray_icon).menu(&menu_tray);
     #[cfg(not(target_os = "linux"))]
     let tray = tray.on_tray_icon_event(|tray, event| {
@@ -45,16 +43,16 @@ pub fn setup_tray(handler: &AppHandle) -> Result<TrayIcon, tauri::Error> {
         {
             let handler = tray.app_handle();
             if let Some(webview_window) = handler.app_handle().get_webview_window("main") {
-                tauri_plugin_positioner::on_tray_event(app.app_handle(), &event);
-                let _ = webview_window.show();
-                let _ = webview_window
-                    .as_ref()
-                    .window()
-                    .move_window(Position::TrayCenter);
+                tauri_plugin_positioner::on_tray_event(handler, &event);
+                webview_window.show().expect("failed to show main window");
+                webview_window
+                    .move_window(Position::TrayCenter)
+                    .expect("failed to move window");
             }
         }
     });
 
+    // add support to open the tray in a linux Gnome enviroment
     let tray = tray.on_menu_event(move |handler, event| {
         if event.id() == launch_kreck.id() {
             if let Some(webview_window) = handler.get_webview_window("main") {
