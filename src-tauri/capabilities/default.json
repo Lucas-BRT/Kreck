@@ -2,7 +2,7 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Capability for the main window",
-  "windows": ["main"],
+  "windows": ["main", "config", "qr-code", "error"],
   "permissions": [
     "core:path:default",
     "core:event:default",
@@ -14,7 +14,6 @@
     "core:tray:default",
     "shell:allow-open",
     "positioner:default",
-    "core:window:default",
     "core:window:allow-start-dragging"
   ]
 }

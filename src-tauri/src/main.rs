@@ -2,11 +2,13 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod commands;
+mod config;
 mod controller;
+mod error;
+mod gui;
+mod network;
 mod server;
-mod ui;
-mod utils;
 
 fn main() {
-    ui::render_tauri_app();
+    gui::run();
 }

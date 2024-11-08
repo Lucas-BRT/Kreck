@@ -1,7 +1,6 @@
 use crate::controller::setup_kenku_controller;
 use crate::server::setup_server;
-use crate::utils::get_local_ip;
-use crate::utils::RocketShutdownHandle;
+use crate::server::RocketShutdownHandle;
 use std::sync::Arc;
 use tauri::{
     async_runtime::{self, Mutex},
@@ -9,23 +8,8 @@ use tauri::{
 };
 
 #[tauri::command]
-pub fn get_host_local_address() -> Result<String, String> {
-    get_local_ip()
-}
-
-#[tauri::command]
-pub async fn request_server_shutdown(app_state: AppHandle) {
-    let state = app_state.state::<Arc<Mutex<RocketShutdownHandle>>>();
-    let handle = state.try_lock().unwrap();
-
-    if let Some(handler) = &handle.0 {
-        handler.clone().notify();
-    }
-}
-
-#[tauri::command]
-pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) -> Result<(), String> {
-    let rocket_state = app_state.state::<Arc<Mutex<RocketShutdownHandle>>>();
+pub async fn launch_server(handler: AppHandle, ip: String, port: u16) -> Result<(), String> {
+    let rocket_state = handler.state::<Arc<Mutex<RocketShutdownHandle>>>();
 
     let controller = setup_kenku_controller(ip, port).await?;
 
@@ -43,4 +27,14 @@ pub async fn launch_server(app_state: AppHandle, ip: String, port: u16) -> Resul
     });
 
     Ok(())
+}
+
+#[tauri::command]
+pub async fn request_server_shutdown(handler: AppHandle) {
+    let state = handler.state::<Arc<Mutex<RocketShutdownHandle>>>();
+    let handle = state.try_lock().unwrap();
+
+    if let Some(handler) = &handle.0 {
+        handler.clone().notify();
+    }
 }

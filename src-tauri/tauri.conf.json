@@ -11,16 +11,18 @@
       {
         "title": "kreck",
         "width": 260,
-        "height": 250,
+        "height": 120,
         "skipTaskbar": true,
         "resizable": false,
         "minimizable": false,
+        "maximizable": false,
         "alwaysOnTop": true,
         "visible": false,
         "focus": false,
         "closable": false,
         "hiddenTitle": true,
         "decorations": false,
+        "shadow": false,
         "transparent": true
       }
     ],
@@ -34,7 +36,8 @@
     "icon": [
       "icons/48x48.png",
       "icons/72x72.png",
-      "icons/128x128.png"
+      "icons/128x128.png",
+      "icons/icon.ico"
     ]
   },
   "plugins": {}

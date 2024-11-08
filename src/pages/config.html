@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script type="module" src="../js/inputValidators.js" defer></script>
+  </head>
+  <body>
+    <div class="window config-window" data-tauri-drag-region>
+      <form>
+        <section id="ip-wrapper">
+          <label for="ip-container">IP</label>
+          <div id="ip-container" class="entry-container">
+            <input
+              type="number"
+              id="ip-1"
+              class="ip-entry"
+              placeholder="127"
+              value="127"
+              min="0"
+              max="255"
+            />.
+            <input
+              type="number"
+              id="ip-2"
+              class="ip-entry"
+              placeholder="0"
+              value="0"
+              min="0"
+              max="255"
+            />.
+            <input
+              type="number"
+              id="ip-3"
+              class="ip-entry"
+              placeholder="0"
+              value="0"
+              min="0"
+              max="255"
+            />.
+            <input
+              type="number"
+              id="ip-4"
+              class="ip-entry"
+              placeholder="1"
+              value="1"
+              min="0"
+              max="255"
+            />
+          </div>
+        </section>
+        <section id="port-wrapper">
+          <label for="port-container">PORT</label>
+          <div id="port-container" class="entry-container">
+            <input
+              type="number"
+              id="port"
+              name="port"
+              value="3333"
+              placeholder="3333"
+              min="0"
+            />
+          </div>
+        </section>
+      </form>
+      <button id="save-button">SAVE</button>
+    </div>
+  </body>
+</html>
