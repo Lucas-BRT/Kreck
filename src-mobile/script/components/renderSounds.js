@@ -12,11 +12,11 @@ export function renderSoundsList(sounds) {
   const soundsContainer = document.querySelector(".content");
   soundsContainer.innerHTML = "";
 
+  const closeButton = createCloseButton();
+  soundsContainer.prepend(closeButton);
+
   sounds.forEach((sound) => {
     const soundTemplate = getSoundTemplate(sound);
     soundsContainer.appendChild(soundTemplate);
   });
-
-  const closeButton = createCloseButton();
-  soundsContainer.appendChild(closeButton);
 }
