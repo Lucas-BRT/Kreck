@@ -26,8 +26,8 @@ export async function getPlaylistPlayback() {
   return data;
 }
 
-export async function getSoundboardPlayback() {
-  const response = await fetch("/soundboard-playback");
+export async function getSoundboard() {
+  const response = await fetch("/soundboard");
   const data = await response.json();
   return data;
 }
