@@ -84,6 +84,11 @@ a {
   border-radius: 20px 50px 50px 20px;
 }
 
+.track-name-no-fade::before,
+.track-name-no-fade::after {
+  content: none;
+}
+
 .track-informations {
   overflow: hidden;
   display: flex;
@@ -92,28 +97,70 @@ a {
   flex-direction: column;
   width: 70%;
   height: 100px;
-  margin-left: 7%;
+  margin-left: 1%;
 }
 
-.carrousel {
-  animation: carrousel 15s linear infinite;
+.trackSection-name-fade {
+  position: relative;
 }
 
-.track-name {
+.trackSection-name-fade::before,
+.trackSection-name-fade::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  z-index: 2;
+}
+
+.trackSection-name-fade::before {
+  margin-left: -1px;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--cinza-escuro),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.trackSection-name-fade::after {
+  margin-right: -1px;
+  top: 5%;
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--cinza-escuro),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.trackSection-track-name {
   width: 100%;
   white-space: nowrap;
   font-size: 110%;
 }
 
-.track-playlist {
+.trackSection-track-playlist {
   font-size: 110%;
 }
-.track-player {
+.trackSection-track-player {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30%;
 }
+.carousel-small-trackSection {
+  animation: carousel-small 20s linear infinite;
+}
+
+.carousel-medium-trackSection {
+  animation: carousel-medium 25s linear infinite;
+}
+
+.carousel-large-trackSection {
+  animation: carousel-large 30s linear infinite;
+}
+
 .play-button {
   display: flex;
   align-items: center;
@@ -155,7 +202,7 @@ a {
   margin-inline: 6%;
   overflow: hidden;
 }
-.playbackbarTrack-name {
+.playbackbar-track-name {
   white-space: nowrap;
   width: 100%;
   font-size: 100%;
@@ -178,20 +225,106 @@ button img {
   width: 45%;
 }
 
-@keyframes carrousel {
+.playbackbar-name-fade {
+  position: relative;
+}
+
+.playbackbar-name-fade::before,
+.playbackbar-name-fade::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  z-index: 2;
+}
+
+.playbackbar-name-fade::before {
+  margin-left: -1px;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--cinza-claro),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.playbackbar-name-fade::after {
+  margin-right: -1px;
+  top: 5%;
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--cinza-claro),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.no-fade.playbackbar-name-fade::before {
+  width: 0px !important;
+}
+
+.carousel-small-playbackbar {
+  animation: carousel-small 20s linear infinite;
+}
+
+.carousel-medium-playbackbar {
+  animation: carousel-medium 25s linear infinite;
+}
+
+.carousel-large-playbackbar {
+  animation: carousel-large 30s linear infinite;
+}
+
+@keyframes carousel-small {
   0% {
-    transform: translate(20%, 0);
+    transform: translate(0%, 0);
   }
-  50% {
-    transform: translate(-150%, 0);
+  20% {
+    transform: translate(0%, 0);
   }
-  51% {
+  75% {
+    transform: translate(-155%, 0);
+  }
+  75.10% {
     transform: translate(100050%, 0);
   }
-  52% {
-    transform: translate(100%, 0);
+  75.11% {
+    transform: translate(95%, 0);
   }
-  100% {
-    transform: translate(20%, 0);
+}
+
+@keyframes carousel-medium {
+  0% {
+    transform: translate(0%, 0);
+  }
+  20% {
+    transform: translate(0%, 0);
+  }
+  75% {
+    transform: translate(-270%, 0);
+  }
+  75.10% {
+    transform: translate(100050%, 0);
+  }
+  75.11% {
+    transform: translate(95%, 0);
+  }
+}
+
+@keyframes carousel-large {
+  0% {
+    transform: translate(0%, 0);
+  }
+  20% {
+    transform: translate(0%, 0);
+  }
+  75% {
+    transform: translate(-370%, 0);
+  }
+  75.10% {
+    transform: translate(100050%, 0);
+  }
+  75.11% {
+    transform: translate(95%, 0);
   }
 }
