@@ -16,43 +16,28 @@ export function handlePlaySound(convertedSounds) {
             if (index > -1) {
               playingSounds.splice(index, 1);
             }
-            console.log(`Som parado: ${sound.id}`);
+            console.log(`Som parado: ${sound.title}`);
             container.classList.remove("active");
           })
           .catch((err) => {
-            console.error(`Falha ao parar som: ${err}`);
+            console.error(`Falha ao parar o som: ${err}`);
           });
       } else {
         try {
           await putPlaySound(sound.id);
           playingSounds.push(sound.id);
-          console.log(`Som tocando: ${sound.title}`);
+          console.log(`Tocando som: ${sound.title}`);
           container.classList.add("active");
 
-          let retries = 0;
-          const maxRetries = 5;
-          const retryDelay = 1000;
+          const delay = 1000;
+          await new Promise((resolve) => setTimeout(resolve, delay));
 
-          while (retries < maxRetries) {
-            const data = await getSoundboard();
-            const track = data.sounds.find((s) => s.id === sound.id);
+          const data = await getSoundboard();
+          const track = data.sounds.find((s) => s.id === sound.id);
 
-            if (track && track.duration) {
-              console.log(`Duração do som encontrada: ${track.duration}`);
-              sound = track;
-              break;
-            }
-
-            retries++;
-            console.log(
-              `Aguardando dados de rastreamento... Tentativa ${retries}`
-            );
-            await new Promise((resolve) => setTimeout(resolve, retryDelay));
-          }
-
-          if (sound && sound.duration) {
+          if (track && track.duration) {
+            sound = track;
             const durationInMs = sound.duration * 1000;
-            console.log(`Duração do som em ms: ${durationInMs}`);
 
             setTimeout(async () => {
               if (playingSounds.includes(sound.id)) {
@@ -61,19 +46,15 @@ export function handlePlaySound(convertedSounds) {
                 if (index > -1) {
                   playingSounds.splice(index, 1);
                 }
+                console.log(`Som parado automaticamente: ${sound.title}`);
                 container.classList.remove("active");
-                console.log(
-                  `Som ${sound.title} interrompido automaticamente após ${sound.duration} segundos`
-                );
               }
             }, durationInMs);
           } else {
-            console.error(
-              "Não foi possível recuperar a duração da faixa após várias tentativas."
-            );
+            console.error("Falha ao recuperar a duração do som.");
           }
         } catch (err) {
-          console.error(`Falha ao reproduzir som: ${err}`);
+          console.error(`Falha ao tocar o som: ${err}`);
         }
       }
     });
