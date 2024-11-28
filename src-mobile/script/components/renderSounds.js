@@ -4,7 +4,7 @@ function createCloseButton() {
   let closeButton = document.createElement("div");
   closeButton.className = "container-sound";
   closeButton.id = "container-close";
-  closeButton.innerHTML = `<h1><a href="./index.html">X</a></h1>`;
+  closeButton.innerHTML = `<div class ="sound-name"><h1><a href="./index.html">X</a></h1></div>`;
   return closeButton;
 }
 
