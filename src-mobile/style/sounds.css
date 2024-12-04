@@ -1,0 +1,133 @@
+* {
+  font-family: "KodeMono";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "KodeMono";
+  src: url("../fonts/KodeMono-VariableFont_wght.ttf");
+}
+
+:root {
+  --azul-tatu: #306ee7;
+  --cinza-claro: #404451;
+  --cinza-escuro: #222222;
+}
+
+body {
+  background-color: var(--cinza-escuro);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.container-sound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(45deg, var(--cinza-claro), var(--cinza-escuro));
+  border-radius: 15px;
+  box-shadow: 0 0 5px black;
+  user-select: none;
+  touch-action: manipulation;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.container-sound.active {
+  background: linear-gradient(
+    45deg,
+    #003366,
+    #1e3a8a,
+    #2563eb,
+    #3c91fa,
+    #012650
+  );
+  background-size: 400% 400%;
+  box-shadow: 0 0 10px blue;
+  animation: smooth-blue-shift 10s ease infinite;
+}
+
+@keyframes smooth-blue-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+#container-close {
+  background: linear-gradient(45deg, rgb(138, 0, 0), rgb(71, 0, 0));
+}
+
+#container-close h1 a {
+  color: white;
+  font-size: 60px;
+  text-decoration: none;
+  font-weight: bold;
+  user-select: none;
+}
+
+.sound-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+}
+
+.sound-name h1 {
+  font-size: 13px;
+  color: white;
+  font-weight: bold;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 500px) {
+  .container-sound {
+    height: 120px;
+  }
+  .sound-name h1 {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 801px) {
+  .container-sound {
+    height: 150px;
+  }
+  .sound-name h1 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1981px) {
+  .content {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .sound-name h1 {
+    font-size: 30px;
+  }
+}

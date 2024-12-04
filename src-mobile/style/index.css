@@ -3,117 +3,128 @@
   --cinza-claro: #404451;
   --cinza-escuro: #222222;
 }
+
 * {
   font-family: "KodeMono", monospace;
-}
-body {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-color: var(--cinza-escuro);
+}
+
 .container {
   height: 100vh;
-  width: 100%;
-  background-color: var(--cinza-escuro);
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
+
 .navegation {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 12%;
-}
-.navegation-background {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 90%;
-  height: 47%;
-  border-radius: 1000px;
-  background-color: var(--cinza-claro);
-}
-.navegation-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 100%;
-  border-radius: 10000px;
+  height: 10%;
 }
+
+.navegation-background {
+  display: flex;
+  width: 80%;
+  height: 60%;
+  border-radius: 100px;
+  background-color: var(--cinza-claro);
+  box-shadow: 0px 0px 10px black;
+}
+
+.navegation-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 100px;
+}
+
+h1,
 a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   color: white;
+  outline: none;
+  user-select: none;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 25px;
+  font-weight: 100;
 }
 
 .actived {
   border: 2px solid var(--azul-tatu);
-  box-shadow: 0px 0px 12px 1px var(--azul-tatu);
+  box-shadow: 0px 0px 15px var(--azul-tatu);
 }
-.navegation-button h1 {
-  color: white;
-  padding: 0;
-  margin: 0;
-  font-size: 25px;
-  font-weight: 100;
-}
+
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  gap: 5px;
-  overflow-y: scroll;
-  padding-block: 5%;
+  height: 90%;
+  gap: 10px;
+  overflow-y: auto;
+  padding-top: 10px;
 }
+
 .container-track {
   border-bottom: 3px solid var(--cinza-claro);
-  width: 93%;
+  width: 90%;
   height: 60px;
   color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  transition: 0.5s;
 }
+
 .container-track:hover {
   border-bottom: 3px solid var(--azul-tatu);
-  box-shadow: 0px 0px 12px 1px var(--azul-tatu);
-  transition: 1s;
-  border-radius: 20px 50px 50px 20px;
+  box-shadow: 0px 0px 10px var(--azul-tatu);
+  border-radius: 0px 50px 50px 0px;
 }
 
 .track-informations {
-  overflow: hidden;
   display: flex;
   justify-content: center;
-  gap: 10px;
   flex-direction: column;
+  overflow: hidden;
   width: 70%;
-  height: 100px;
-  margin-left: 7%;
-}
-
-.carrousel {
-  animation: carrousel 15s linear infinite;
+  height: 100%;
+  gap: 10px;
 }
 
 .track-name {
-  width: 100%;
   white-space: nowrap;
-  font-size: 110%;
+  animation: slide 12s linear infinite;
 }
 
-.track-playlist {
-  font-size: 110%;
+.track-name p {
+  font-size: 20px;
 }
+.track-playlist p {
+  font-size: 15px;
+}
+
+.carrousel {
+  animation: carrousel 12s linear infinite;
+}
+
 .track-player {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
 }
+
 .play-button {
   display: flex;
   align-items: center;
@@ -121,7 +132,7 @@ a {
   background-color: var(--azul-tatu);
   height: 35px;
   width: 35px;
-  border-radius: 100000px;
+  border-radius: 50%;
 }
 
 .play-button p {
@@ -139,6 +150,7 @@ a {
   border-left: 15px solid white;
   margin-left: 11%;
 }
+
 .playbackbar {
   display: none;
   flex-direction: column;
@@ -148,13 +160,15 @@ a {
   height: 20%;
   color: white;
   background-color: var(--cinza-claro);
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0 0;
 }
+
 .playbackbar-informations {
   width: 90%;
   margin-inline: 6%;
   overflow: hidden;
 }
+
 .playbackbarTrack-name {
   white-space: nowrap;
   width: 100%;
@@ -167,6 +181,7 @@ a {
   justify-content: space-around;
   width: 90%;
 }
+
 .playbackbar-buttons button {
   background: none;
   border: 0;
@@ -174,6 +189,7 @@ a {
   width: 15%;
   padding: 0;
 }
+
 button img {
   width: 45%;
 }
