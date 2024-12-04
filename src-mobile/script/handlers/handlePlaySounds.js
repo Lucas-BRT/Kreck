@@ -29,7 +29,7 @@ export function handlePlaySound(convertedSounds) {
           console.log(`Tocando som: ${sound.title}`);
           container.classList.add("active");
 
-          const delay = 1000;
+          const delay = 100;
           await new Promise((resolve) => setTimeout(resolve, delay));
 
           const data = await getSoundboard();
