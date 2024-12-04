@@ -7,37 +7,22 @@ class Sound {
 }
 
 export function convertSounds(jsonSounds) {
-  let convertedSounds = [];
+  const convertedSounds = [];
 
-  const soundboards = jsonSounds.soundboards;
-  const sounds = jsonSounds.sounds;
+  jsonSounds.soundboards.forEach((soundboard) => {
+    soundboard.sounds.forEach((soundboardSoundId) => {
+      const sound = jsonSounds.sounds.find((s) => s.id === soundboardSoundId);
 
-  for (let i = 0; i < soundboards.length; i++) {
-    const soundboard = soundboards[i];
-
-    for (
-      let soundboard_sound_index = 0;
-      soundboard_sound_index < soundboard.sounds.length;
-      soundboard_sound_index++
-    ) {
-      const soundboard_sound = soundboard.sounds[soundboard_sound_index];
-
-      for (let sound_index = 0; sound_index < sounds.length; sound_index++) {
-        const sound = sounds[sound_index];
-
-        if (sound.id === soundboard_sound) {
-          const convertedSound = new Sound(
-            sound.title,
-            soundboard.title,
-            sound.id
-          );
-
-          convertedSounds.push(convertedSound);
-          break;
-        }
+      if (sound) {
+        const convertedSound = new Sound(
+          sound.title,
+          soundboard.title,
+          sound.id
+        );
+        convertedSounds.push(convertedSound);
       }
-    }
-  }
+    });
+  });
 
   return convertedSounds;
 }
